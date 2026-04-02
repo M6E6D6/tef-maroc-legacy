@@ -19,7 +19,7 @@ export function Hero() {
       <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-8 lg:py-24">
         <div>
           <motion.p
-            initial={{ opacity: 0, y: 12 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45 }}
             className="text-sm font-semibold uppercase tracking-widest text-[var(--color-gold)]"
@@ -28,7 +28,7 @@ export function Hero() {
           </motion.p>
           <motion.h1
             id="hero-heading"
-            initial={{ opacity: 0, y: 16 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.05 }}
             className="font-heading mt-4 text-4xl font-bold tracking-tight text-[var(--color-navy)] sm:text-5xl lg:text-[3.25rem] lg:leading-tight"
@@ -36,7 +36,7 @@ export function Hero() {
             {t.home.heroTitle}
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="mt-5 max-w-xl text-lg text-slate-600"
@@ -44,7 +44,7 @@ export function Hero() {
             {t.home.heroText}
           </motion.p>
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
             className="mt-8 flex flex-wrap gap-4"
@@ -66,7 +66,7 @@ export function Hero() {
           </motion.div>
         </div>
         <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
+          initial={false}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.55, delay: 0.05 }}
         >

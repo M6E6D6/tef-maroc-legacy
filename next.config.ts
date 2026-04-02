@@ -6,6 +6,10 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)));
 const nm = (...parts: string[]) => path.join(projectRoot, "node_modules", ...parts);
 
 const nextConfig: NextConfig = {
+  // Inline global CSS into the HTML so layout still works if external /_next/*.css is blocked (extensions, corp proxies).
+  experimental: {
+    inlineCss: true,
+  },
   turbopack: {
     root: projectRoot,
     resolveAlias: {

@@ -1,9 +1,14 @@
+const productionUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
+  "https://tef-maroc-legacy.vercel.app";
+
 export const siteConfig = {
   name: "TEF Maroc Legacy",
   tagline: "Training, coaching & professional development",
   description:
     "TEF Maroc Legacy empowers hospitality and management professionals through accredited training, coaching, and tailored skill development across Morocco.",
-  url: "https://tef-maroc-legacy.example.com",
+  url: productionUrl,
   defaultLocale: "fr",
   locales: ["fr", "en", "ar"],
   ogImage: "/opengraph-image",
