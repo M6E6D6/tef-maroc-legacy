@@ -1,8 +1,24 @@
-/** Canonical site URL in prod. Set `NEXT_PUBLIC_SITE_URL` (e.g. https://www.example.com). Search console tokens: see `searchEngineVerification` in `@/i18n/metadata`. */
-const productionUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
-  "https://tef-maroc-legacy.vercel.app";
+/** Canonical site URL (sitemap, JSON-LD, robots). Prefer `NEXT_PUBLIC_SITE_URL`. */
+function resolveSiteUrl(): string {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+  if (explicit) return explicit;
+
+  // Vercel production: stable project hostname so `/sitemap.xml` is not full of one-off deploy URLs
+  if (
+    process.env.VERCEL_ENV === "production" &&
+    process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  }
+
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+
+  return "https://tef-maroc-legacy-f7t8.vercel.app";
+}
+
+const productionUrl = resolveSiteUrl();
 
 export const siteConfig = {
   name: "TEF Maroc Legacy",
