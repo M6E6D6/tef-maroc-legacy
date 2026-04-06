@@ -21,13 +21,13 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           <div>
-            <div className="relative h-12 w-[240px] max-w-full sm:h-14 sm:w-[280px]">
+            <div className="relative h-14 w-[280px] max-w-full sm:h-16 sm:w-[300px]">
               <Image
                 src={siteConfig.logoPath}
                 alt={siteConfig.name}
                 fill
                 className="object-contain object-left"
-                sizes="200px"
+                sizes="(max-width: 640px) 280px, 300px"
               />
             </div>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-400">

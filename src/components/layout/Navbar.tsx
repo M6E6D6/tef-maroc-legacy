@@ -10,6 +10,8 @@ import { useI18n } from "@/i18n/I18nProvider";
 import { stripLocaleFromPathname, withLocale } from "@/i18n/routing";
 import type { Locale } from "@/i18n/translations";
 
+const LOCALE_CODES: Record<Locale, string> = { fr: "FR", en: "EN", ar: "AR" };
+
 export function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
@@ -23,13 +25,6 @@ export function Navbar() {
     setMenuBarHidden(false);
     lastScrollY.current = typeof window !== "undefined" ? window.scrollY : 0;
   }, [pathname]);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (menuBarHidden) root.setAttribute("data-nav-condensed", "");
-    else root.removeAttribute("data-nav-condensed");
-    return () => root.removeAttribute("data-nav-condensed");
-  }, [menuBarHidden]);
 
   useEffect(() => {
     let ticking = false;
@@ -80,47 +75,20 @@ export function Navbar() {
         {t.nav.skipToMain}
       </a>
 
-      <div className="mx-auto flex max-w-6xl flex-col px-4 pt-4 pb-0 sm:px-6 lg:px-8">
-        {/* Row 1: centered logo; language / menu at the inline end */}
-        <div className="relative flex justify-center px-2 pb-3 pt-1 sm:px-4">
-          <Link
-            href={withLocale(locale, "/")}
-            className="inline-flex max-w-[min(24rem,calc(100vw-7.5rem))] justify-center sm:max-w-md md:max-w-lg lg:max-w-xl"
-            aria-label={`${siteConfig.name} — ${t.nav.home}`}
-          >
-            <Image
-              src={siteConfig.logoPath}
-              alt=""
-              width={400}
-              height={138}
-              className="h-14 w-auto max-w-full object-contain object-center sm:h-[4.25rem] md:h-[4.75rem] lg:h-20"
-              priority
-              sizes="(max-width: 640px) 240px, (max-width: 1024px) 320px, 400px"
-            />
-          </Link>
-
-          <div className="absolute end-2 top-1/2 z-10 flex -translate-y-1/2 items-center gap-2 sm:end-4">
-            <label className="sr-only" htmlFor="language-select">
-              {t.languageLabel}
-            </label>
-            <select
-              id="language-select"
-              className="max-w-[min(100%,11rem)] rounded-lg border border-[var(--color-brand-blue)]/25 bg-white px-2.5 py-2 text-sm font-medium text-[var(--color-navy)] shadow-sm focus:border-[var(--color-brand-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-blue)]/25"
-              value={locale}
-              onChange={(e) => {
-                const next = e.target.value as Locale;
-                router.push(withLocale(next, pathWithoutLocale));
-              }}
-              aria-label={t.languageLabel}
-            >
-              <option value="fr">{t.languages.fr}</option>
-              <option value="en">{t.languages.en}</option>
-              <option value="ar">{t.languages.ar}</option>
-            </select>
-
+      <div className="mx-auto max-w-6xl px-4 pt-4 pb-3 sm:px-6 lg:px-8">
+        {/*
+          One row on all breakpoints: menu left, logo center, language right.
+          dir="ltr" keeps FR/EN/AR + controls layout consistent on Arabic pages.
+        */}
+        <div
+          className="relative flex min-h-[3.75rem] items-center gap-2 sm:min-h-[4rem]"
+          dir="ltr"
+        >
+          {/* Left: hamburger (mobile) + primary nav (desktop) */}
+          <div className="relative z-20 flex min-w-0 flex-1 items-center justify-start">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-lg border border-[var(--color-brand-blue)]/25 bg-white p-2.5 text-[var(--color-navy)] md:hidden"
+              className="inline-flex shrink-0 items-center justify-center rounded-lg border border-[var(--color-brand-blue)]/25 bg-white p-2.5 text-[var(--color-navy)] md:hidden"
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-controls="mobile-nav"
@@ -128,33 +96,78 @@ export function Navbar() {
             >
               {open ? <X className="h-6 w-6" aria-hidden /> : <Menu className="h-6 w-6" aria-hidden />}
             </button>
+
+            <nav
+              className={`ml-1 hidden min-w-0 max-w-[min(100%,22rem)] overflow-hidden transition-[opacity,visibility] duration-300 ease-out sm:max-w-[min(100%,26rem)] md:ml-2 md:block md:max-w-[min(100%,32rem)] lg:max-w-[min(100%,40rem)] ${
+                menuBarHidden
+                  ? "md:invisible md:pointer-events-none md:opacity-0"
+                  : "md:opacity-100"
+              }`}
+              aria-label={t.nav.primaryNavigation}
+              aria-hidden={menuBarHidden || undefined}
+            >
+              <ul className="flex flex-wrap items-center gap-1 sm:gap-2">
+                {navLinks.map((link) => {
+                  const href = withLocale(locale, link.href);
+                  const active = pathname === href;
+                  return (
+                    <li key={link.href}>
+                      <Link href={href} className={linkClass(active)} aria-current={active ? "page" : undefined}>
+                        {link.label}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          </div>
+
+          {/* Center: logo */}
+          <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 w-[min(100%,calc(100vw-10.5rem))] max-w-[28rem] -translate-x-1/2 -translate-y-1/2 sm:w-[min(100%,calc(100vw-12rem))] sm:max-w-xl md:max-w-2xl lg:max-w-[42rem]">
+            <Link
+              href={withLocale(locale, "/")}
+              className="pointer-events-auto inline-flex w-full justify-center"
+              aria-label={`${siteConfig.name} — ${t.nav.home}`}
+            >
+              <Image
+                src={siteConfig.logoPath}
+                alt=""
+                width={430}
+                height={149}
+                className="h-16 w-auto max-w-full object-contain object-center sm:h-[4.75rem] md:h-[5.125rem] lg:h-[5.75rem]"
+                priority
+                sizes="(max-width: 640px) 280px, (max-width: 1024px) 360px, 430px"
+              />
+            </Link>
+          </div>
+
+          {/* Right: language */}
+          <div className="relative z-20 flex min-w-0 flex-1 items-center justify-end">
+            <label className="sr-only" htmlFor="language-select">
+              {t.languageLabel}
+            </label>
+            <select
+              id="language-select"
+              className="min-w-[4.25rem] rounded-lg border border-[var(--color-brand-blue)]/25 bg-white px-2 py-2 text-center text-sm font-semibold uppercase tracking-wide text-[var(--color-navy)] shadow-sm focus:border-[var(--color-brand-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-blue)]/25"
+              value={locale}
+              onChange={(e) => {
+                const next = e.target.value as Locale;
+                router.push(withLocale(next, pathWithoutLocale));
+              }}
+              aria-label={t.languageLabel}
+            >
+              <option value="fr" title={t.languages.fr}>
+                {LOCALE_CODES.fr}
+              </option>
+              <option value="en" title={t.languages.en}>
+                {LOCALE_CODES.en}
+              </option>
+              <option value="ar" title={t.languages.ar}>
+                {LOCALE_CODES.ar}
+              </option>
+            </select>
           </div>
         </div>
-
-        {/* Row 2: desktop menu bar under logo — hides while scrolling down */}
-        <nav
-          className={`hidden overflow-hidden border-t border-[var(--color-brand-blue)]/18 transition-[max-height,opacity,padding,border-color] duration-300 ease-out md:block ${
-            menuBarHidden
-              ? "md:!max-h-0 md:border-transparent md:py-0 md:opacity-0 md:pointer-events-none"
-              : "md:max-h-[6rem] md:opacity-100"
-          }`}
-          aria-label={t.nav.primaryNavigation}
-          aria-hidden={menuBarHidden || undefined}
-        >
-          <ul className="flex flex-wrap items-center justify-center gap-1 py-3.5 sm:gap-2">
-            {navLinks.map((link) => {
-              const href = withLocale(locale, link.href);
-              const active = pathname === href;
-              return (
-                <li key={link.href}>
-                  <Link href={href} className={linkClass(active)} aria-current={active ? "page" : undefined}>
-                    {link.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
       </div>
 
       {open ? (
