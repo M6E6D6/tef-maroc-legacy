@@ -1,18 +1,10 @@
 import type { MetadataRoute } from "next";
-import { SERVICE_SLUGS } from "@/data/services-detail";
-import { TRAINING_CATEGORY_SLUGS } from "@/data/trainings";
+import { SITEMAP_PATH_SUFFIXES } from "@/data/sitemap-paths";
 import { siteConfig } from "@/data/site";
 import { defaultLocale, locales } from "@/i18n/translations";
 
-const paths = [
-  "",
-  "/about",
-  "/trainings",
-  ...TRAINING_CATEGORY_SLUGS.map((slug) => `/trainings/${slug}`),
-  "/services",
-  ...SERVICE_SLUGS.map((slug) => `/services/${slug}`),
-  "/contact",
-];
+/** Served at `/sitemap.xml` (do not add `public/sitemap.xml` — it would override this). */
+const paths = SITEMAP_PATH_SUFFIXES;
 
 function sitemapPriority(path: string): number {
   if (path === "") return 1;
