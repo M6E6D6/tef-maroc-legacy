@@ -71,6 +71,8 @@ function NavbarInner() {
         : "text-[var(--foreground)]/80 hover:bg-[var(--color-brand-blue)]/8 hover:text-[var(--color-navy)]"
     }`;
 
+  const barDir = locale === "ar" ? "rtl" : "ltr";
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-[var(--color-brand-blue)]/15 bg-white/95 shadow-sm shadow-[var(--color-navy)]/5 backdrop-blur-md">
       <a
@@ -82,14 +84,14 @@ function NavbarInner() {
 
       <div className="mx-auto max-w-6xl px-4 pt-4 pb-3 sm:px-6 lg:px-8">
         {/*
-          One row on all breakpoints: menu left, logo center, language right.
-          dir="ltr" keeps FR/EN/AR + controls layout consistent on Arabic pages.
+          One row: menu at inline-start, language at inline-end, logo centered.
+          Arabic uses dir="rtl" so the menu sits on the right and the language control on the left.
         */}
         <div
           className="relative flex min-h-[3.75rem] items-center gap-2 sm:min-h-[4rem]"
-          dir="ltr"
+          dir={barDir}
         >
-          {/* Left: hamburger (mobile) + primary nav (desktop) */}
+          {/* Inline-start: hamburger (mobile) + primary nav (desktop) */}
           <div className="relative z-20 flex min-w-0 flex-1 items-center justify-start">
             <button
               type="button"
@@ -103,7 +105,7 @@ function NavbarInner() {
             </button>
 
             <nav
-              className={`ml-1 hidden min-w-0 max-w-[min(100%,22rem)] overflow-hidden transition-[opacity,visibility] duration-300 ease-out sm:max-w-[min(100%,26rem)] md:ml-2 md:block md:max-w-[min(100%,32rem)] lg:max-w-[min(100%,40rem)] ${
+              className={`ms-1 hidden min-w-0 max-w-[min(100%,22rem)] overflow-hidden transition-[opacity,visibility] duration-300 ease-out sm:max-w-[min(100%,26rem)] md:ms-2 md:block md:max-w-[min(100%,32rem)] lg:max-w-[min(100%,40rem)] ${
                 menuBarHidden
                   ? "md:invisible md:pointer-events-none md:opacity-0"
                   : "md:opacity-100"
@@ -146,13 +148,14 @@ function NavbarInner() {
             </Link>
           </div>
 
-          {/* Right: language */}
+          {/* Inline-end: language (select stays LTR so FR/EN/AR read predictably) */}
           <div className="relative z-20 flex min-w-0 flex-1 items-center justify-end">
             <label className="sr-only" htmlFor="language-select">
               {t.languageLabel}
             </label>
             <select
               id="language-select"
+              dir="ltr"
               className="min-w-[4.25rem] rounded-lg border border-[var(--color-brand-blue)]/25 bg-white px-2 py-2 text-center text-sm font-semibold uppercase tracking-wide text-[var(--color-navy)] shadow-sm focus:border-[var(--color-brand-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-blue)]/25"
               value={locale}
               onChange={(e) => {
