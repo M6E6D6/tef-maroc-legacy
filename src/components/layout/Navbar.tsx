@@ -14,6 +14,11 @@ const LOCALE_CODES: Record<Locale, string> = { fr: "FR", en: "EN", ar: "AR" };
 
 export function Navbar() {
   const pathname = usePathname();
+  return <NavbarInner key={pathname} />;
+}
+
+function NavbarInner() {
+  const pathname = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [menuBarHidden, setMenuBarHidden] = useState(false);
@@ -22,9 +27,8 @@ export function Navbar() {
   const pathWithoutLocale = stripLocaleFromPathname(pathname);
 
   useEffect(() => {
-    setMenuBarHidden(false);
     lastScrollY.current = typeof window !== "undefined" ? window.scrollY : 0;
-  }, [pathname]);
+  }, []);
 
   useEffect(() => {
     let ticking = false;
@@ -56,6 +60,7 @@ export function Navbar() {
     { href: "/about", label: t.nav.about },
     { href: "/trainings", label: t.nav.trainings },
     { href: "/services", label: t.nav.services },
+    { href: "/blog", label: t.nav.blog },
     { href: "/contact", label: t.nav.contact },
   ];
 

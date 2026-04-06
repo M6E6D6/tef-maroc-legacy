@@ -1,3 +1,4 @@
+import { BLOG_SLUGS } from "@/data/blog-posts";
 import { SERVICE_SLUGS } from "@/data/services-detail";
 import { TRAINING_CATEGORY_SLUGS } from "@/data/trainings";
 
@@ -12,5 +13,7 @@ export const SITEMAP_PATH_SUFFIXES: string[] = [
   ...TRAINING_CATEGORY_SLUGS.map((slug) => `/trainings/${slug}`),
   "/services",
   ...SERVICE_SLUGS.map((slug) => `/services/${slug}`),
+  "/blog",
+  ...BLOG_SLUGS.map((slug) => `/blog/${slug}`),
   "/contact",
 ];

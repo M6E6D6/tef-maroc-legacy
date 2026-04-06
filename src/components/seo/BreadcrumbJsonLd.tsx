@@ -1,4 +1,5 @@
 import { headers } from "next/headers";
+import { blogBreadcrumbSegment } from "@/data/blog-posts";
 import { serviceBreadcrumbSegment } from "@/data/services-detail";
 import { trainingBreadcrumbSegment } from "@/data/trainings-detail";
 import { absoluteUrl } from "@/i18n/metadata";
@@ -9,18 +10,21 @@ const segmentLabels: Record<Locale, Record<string, string>> = {
     about: "À propos",
     trainings: "Formations",
     services: "Services",
+    blog: "Blog",
     contact: "Contact",
   },
   en: {
     about: "About",
     trainings: "Trainings",
     services: "Services",
+    blog: "Blog",
     contact: "Contact",
   },
   ar: {
     about: "من نحن",
     trainings: "التكوينات",
     services: "الخدمات",
+    blog: "المدونة",
     contact: "اتصل بنا",
   },
 };
@@ -47,6 +51,7 @@ export async function BreadcrumbJsonLd() {
     ...segmentLabels[locale],
     ...serviceBreadcrumbSegment[locale],
     ...trainingBreadcrumbSegment[locale],
+    ...blogBreadcrumbSegment[locale],
   };
   let pathAcc = `/${locale}`;
   for (let i = 1; i < parts.length; i++) {

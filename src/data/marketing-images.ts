@@ -19,6 +19,11 @@ export const marketingImages = {
     "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=82",
   ],
   /** Same order as `TRAINING_CATEGORY_SLUGS` */
+  /** Blog listing & article heroes — order matches `BLOG_SLUGS` in `blog-posts.ts` */
+  blog: [
+    "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=82",
+    "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1200&q=82",
+  ],
   trainings: [
     "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=82",
     "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=82",

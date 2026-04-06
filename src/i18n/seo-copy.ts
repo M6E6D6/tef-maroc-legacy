@@ -74,6 +74,24 @@ export const servicesSeo: Record<Locale, SeoEntry> = {
   },
 };
 
+export const blogSeo: Record<Locale, SeoEntry> = {
+  fr: {
+    title: "Blog",
+    description:
+      "Articles TEF Maroc Legacy : expérience client, accueil, culture HACCP et bonnes pratiques pour hôtels et restaurants au Maroc.",
+  },
+  en: {
+    title: "Blog",
+    description:
+      "TEF Maroc Legacy articles on guest experience, welcome standards, HACCP culture, and hospitality operations in Morocco.",
+  },
+  ar: {
+    title: "المدونة",
+    description:
+      "مقالات تي إي إف ماروك ليجاسي حول تجربة الضيف والاستقبال وثقافة سلامة الغذاء والضيافة في المغرب.",
+  },
+};
+
 export const contactSeo: Record<Locale, SeoEntry> = {
   fr: {
     title: "Contact",

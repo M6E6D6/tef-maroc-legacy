@@ -12,6 +12,7 @@ type Dictionary = {
     about: string;
     trainings: string;
     services: string;
+    blog: string;
     contact: string;
     openMenu: string;
     closeMenu: string;
@@ -41,6 +42,8 @@ type Dictionary = {
     serviceCoaching: string;
     serviceWorkshop: string;
     servicePlanning: string;
+    blogGuestExcellence: string;
+    blogFoodSafety: string;
   };
   home: {
     heroEyebrow: string;
@@ -119,6 +122,18 @@ type Dictionary = {
     ctaIntro: string;
     ctaContact: string;
   };
+  blogPage: {
+    title: string;
+    intro: string;
+    eyebrow: string;
+    articlesTitle: string;
+    subtitle: string;
+  };
+  blogDetailPage: {
+    backToBlog: string;
+    ctaIntro: string;
+    ctaContact: string;
+  };
 };
 
 export const translations: Record<Locale, Dictionary> = {
@@ -130,6 +145,7 @@ export const translations: Record<Locale, Dictionary> = {
       about: "À propos",
       trainings: "Formations",
       services: "Services",
+      blog: "Blog",
       contact: "Contact",
       openMenu: "Ouvrir le menu",
       closeMenu: "Fermer le menu",
@@ -157,6 +173,8 @@ export const translations: Record<Locale, Dictionary> = {
       serviceCoaching: "Échange et coaching professionnel en face à face",
       serviceWorkshop: "Séminaire et présentation en petit groupe",
       servicePlanning: "Analyse de documents et planification stratégique",
+      blogGuestExcellence: "Hall d’hôtel et accueil client professionnel",
+      blogFoodSafety: "Cuisine professionnelle et contrôle des denrées",
     },
     home: {
       heroEyebrow: "Excellence professionnelle",
@@ -242,6 +260,19 @@ export const translations: Record<Locale, Dictionary> = {
       ctaIntro: "Parlons de votre niveau actuel et du calendrier souhaité pour bâtir un parcours adapté.",
       ctaContact: "Nous contacter",
     },
+    blogPage: {
+      title: "Blog",
+      intro:
+        "Articles et retours d’expérience sur l’excellence opérationnelle en hôtellerie, restauration et sécurité alimentaire.",
+      eyebrow: "Ressources",
+      articlesTitle: "Articles récents",
+      subtitle: "Conseils pratiques pour les équipes terrain.",
+    },
+    blogDetailPage: {
+      backToBlog: "Retour au blog",
+      ctaIntro: "Un projet de formation ou d’accompagnement ? Échangeons sur vos objectifs.",
+      ctaContact: "Nous contacter",
+    },
   },
   en: {
     languageLabel: "Language",
@@ -251,6 +282,7 @@ export const translations: Record<Locale, Dictionary> = {
       about: "About Us",
       trainings: "Trainings",
       services: "Services",
+      blog: "Blog",
       contact: "Contact",
       openMenu: "Open menu",
       closeMenu: "Close menu",
@@ -278,6 +310,8 @@ export const translations: Record<Locale, Dictionary> = {
       serviceCoaching: "Professional coaching conversation",
       serviceWorkshop: "Seminar room and group presentation",
       servicePlanning: "Planning session reviewing documents and strategy",
+      blogGuestExcellence: "Hotel lobby and professional guest welcome",
+      blogFoodSafety: "Professional kitchen and food safety in action",
     },
     home: {
       heroEyebrow: "Professional excellence",
@@ -363,6 +397,19 @@ export const translations: Record<Locale, Dictionary> = {
       ctaIntro: "Share your current level and preferred timing so we can shape the right learning path.",
       ctaContact: "Contact us",
     },
+    blogPage: {
+      title: "Blog",
+      intro:
+        "Insights on operational excellence in hospitality, guest experience, and food safety culture.",
+      eyebrow: "Resources",
+      articlesTitle: "Latest articles",
+      subtitle: "Practical ideas for front-line teams.",
+    },
+    blogDetailPage: {
+      backToBlog: "Back to blog",
+      ctaIntro: "Planning training or coaching? Tell us about your goals.",
+      ctaContact: "Contact us",
+    },
   },
   ar: {
     languageLabel: "اللغة",
@@ -372,6 +419,7 @@ export const translations: Record<Locale, Dictionary> = {
       about: "من نحن",
       trainings: "التكوينات",
       services: "الخدمات",
+      blog: "المدونة",
       contact: "اتصل بنا",
       openMenu: "فتح القائمة",
       closeMenu: "إغلاق القائمة",
@@ -399,6 +447,8 @@ export const translations: Record<Locale, Dictionary> = {
       serviceCoaching: "حوار وتوجيه مهني مباشر",
       serviceWorkshop: "قاعة ندوة وعرض في مجموعة صغيرة",
       servicePlanning: "تخطيط ومراجعات استراتيجية على الوثائق",
+      blogGuestExcellence: "فندق واستقبال ضيوف في الضيافة",
+      blogFoodSafety: "مطبخ مهني وسلامة غذائية",
     },
     home: {
       heroEyebrow: "التميز المهني",
@@ -475,6 +525,18 @@ export const translations: Record<Locale, Dictionary> = {
     trainingsDetailPage: {
       backToTrainings: "العودة إلى الكتالوج",
       ctaIntro: "شاركونا مستواكم الحالي والتوقيت المناسب لنصمم مساراً ملائماً.",
+      ctaContact: "اتصل بنا",
+    },
+    blogPage: {
+      title: "المدونة",
+      intro: "مقالات حول التميز التشغيلي في الضيافة وتجربة الضيف وثقافة سلامة الغذاء.",
+      eyebrow: "موارد",
+      articlesTitle: "مقالات",
+      subtitle: "أفكار عملية للفرق الميدانية.",
+    },
+    blogDetailPage: {
+      backToBlog: "العودة إلى المدونة",
+      ctaIntro: "مشروع تكوين أو مرافقة؟ شاركونا أهدافكم.",
       ctaContact: "اتصل بنا",
     },
   },
