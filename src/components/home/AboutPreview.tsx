@@ -4,7 +4,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { SectionImage } from "@/components/ui/SectionImage";
+import { marketingImages } from "@/data/marketing-images";
 import { useI18n } from "@/i18n/I18nProvider";
 import { withLocale } from "@/i18n/routing";
 
@@ -16,9 +17,11 @@ export function AboutPreview() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <FadeIn>
-            <PlaceholderImage
-              label="Our team — instructors and facilitators"
+            <SectionImage
+              src={marketingImages.aboutPreview}
+              alt={t.mediaAlt.aboutPreview}
               className="lg:order-1"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </FadeIn>
           <div className="lg:order-2">

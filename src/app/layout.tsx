@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Noto_Sans_Arabic, Poppins } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
@@ -24,6 +24,12 @@ const notoSansArabic = Noto_Sans_Arabic({
   variable: "--font-arabic",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0f3566",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -100,10 +106,13 @@ export default async function RootLayout({
     <html
       lang={htmlLocale}
       dir={dir}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={`${inter.variable} ${poppins.variable} ${notoSansArabic.variable} h-full`}
     >
-      <body className="flex min-h-full flex-col antialiased">{children}</body>
+      <body className="flex min-h-full flex-col antialiased" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }

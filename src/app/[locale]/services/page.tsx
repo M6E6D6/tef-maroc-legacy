@@ -2,7 +2,8 @@
 
 import { BookMarked, MessageCircle, Presentation, Route } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { SectionImage } from "@/components/ui/SectionImage";
+import { marketingImages } from "@/data/marketing-images";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useI18n } from "@/i18n/I18nProvider";
 
@@ -31,6 +32,12 @@ const defaultServices = [
 
 export default function ServicesPage() {
   const { locale, t } = useI18n();
+  const servicePhotoAlts = [
+    t.mediaAlt.serviceTraining,
+    t.mediaAlt.serviceCoaching,
+    t.mediaAlt.serviceWorkshop,
+    t.mediaAlt.servicePlanning,
+  ] as const;
   const services =
     locale === "fr"
       ? [
@@ -72,11 +79,12 @@ export default function ServicesPage() {
               <li key={s.title}>
                 <FadeIn delay={i * 0.05}>
                   <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md">
-                    <PlaceholderImage
-                      label={`${s.title} — image placeholder`}
+                    <SectionImage
+                      src={marketingImages.services[i]!}
+                      alt={servicePhotoAlts[i]!}
                       aspect="wide"
-                      className="rounded-none border-0"
-                      icon={<s.icon className="h-8 w-8" aria-hidden />}
+                      className="rounded-none border-0 shadow-none"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                     <div className="flex flex-1 flex-col p-6 sm:p-8">
                       <div className="flex items-center gap-3">

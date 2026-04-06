@@ -3,7 +3,7 @@ import { absoluteUrl } from "@/i18n/metadata";
 
 export function OrganizationJsonLd() {
   const orgId = `${siteConfig.url}/#organization`;
-  const logoUrl = absoluteUrl("/favicon.ico");
+  const logoUrl = absoluteUrl(siteConfig.logoPath);
   const linkedin = siteConfig.social.linkedin?.replace(/\/$/, "");
   const cleanSameAs =
     linkedin && linkedin !== "https://www.linkedin.com" ? [linkedin] : [];

@@ -1,12 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --color-navy: #0c1e3d;
-  --color-navy-light: #1a3a6e;
-  --color-gold: #c9a227;
-  --color-gold-hover: #d4b03a;
+  /* Space for fixed navbar (logo row + menu bar on md+); tune if header height changes */
+  --app-header-pad: 7.5rem;
+  /* Aligned with TEF Maroc logo: primary blues (TEF + tagline), flag accent (MA / ROC) */
+  --color-brand-blue: #1e64c8;
+  --color-navy: #0f3566;
+  --color-navy-light: #2563c4;
+  --color-gold: #b8941e;
+  --color-gold-hover: #c9a32a;
+  --color-morocco-red: #c1272d;
+  --color-morocco-green: #006b3c;
   --background: #ffffff;
-  --foreground: #0f172a;
+  --foreground: #152c52;
 }
 
 @theme inline {
@@ -31,6 +37,17 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --app-header-pad: 10.75rem;
+  }
+}
+
+/* Narrower pad when the desktop link row is collapsed on scroll (Navbar sets data-nav-condensed on <html>) */
+html[data-nav-condensed] {
+  --app-header-pad: 7.5rem;
 }
 
 /* Smooth scroll for in-page anchors */

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useMemo } from "react";
+import { createContext, useContext, useLayoutEffect, useMemo } from "react";
 import { translations, type Locale } from "@/i18n/translations";
 
 type I18nContextValue = {
@@ -17,7 +17,7 @@ type I18nProviderProps = {
 };
 
 export function I18nProvider({ children, locale }: I18nProviderProps) {
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.lang = locale;
     document.documentElement.dir = locale === "ar" ? "rtl" : "ltr";
   }, [locale]);

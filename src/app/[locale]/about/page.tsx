@@ -2,10 +2,13 @@
 
 import { Users, Search, GraduationCap, LineChart } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { SectionImage } from "@/components/ui/SectionImage";
+import { marketingImages } from "@/data/marketing-images";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/data/site";
 import { useI18n } from "@/i18n/I18nProvider";
+
+const teamPhotoAltKeys = ["teamCollaboration", "teamKitchen", "teamWorkshop"] as const;
 
 export default function AboutPage() {
   const { locale, t } = useI18n();
@@ -76,7 +79,11 @@ export default function AboutPage() {
               </div>
             </FadeIn>
             <FadeIn delay={0.08}>
-              <PlaceholderImage label="Our training center — classrooms and labs" />
+              <SectionImage
+                src={marketingImages.aboutFacility}
+                alt={t.mediaAlt.aboutFacility}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </FadeIn>
           </div>
         </div>
@@ -122,10 +129,12 @@ export default function AboutPage() {
               <li key={member.id}>
                 <FadeIn delay={i * 0.06}>
                   <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-                    <PlaceholderImage
-                      label={`Photo placeholder — ${member.name}`}
+                    <SectionImage
+                      src={marketingImages.team[i]!}
+                      alt={t.mediaAlt[teamPhotoAltKeys[i]!]}
                       aspect="square"
-                      className="rounded-none border-0"
+                      className="rounded-none border-0 shadow-none"
+                      sizes="(max-width: 640px) 100vw, 33vw"
                     />
                     <div className="p-5">
                       <div className="flex items-center gap-2 text-[var(--color-navy)]">

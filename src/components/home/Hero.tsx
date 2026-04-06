@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { SectionImage } from "@/components/ui/SectionImage";
+import { marketingImages } from "@/data/marketing-images";
 import { useI18n } from "@/i18n/I18nProvider";
 import { withLocale } from "@/i18n/routing";
 
@@ -12,10 +13,17 @@ export function Hero() {
 
   return (
     <section
-      className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white"
+      className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white"
       aria-labelledby="hero-heading"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(201,162,39,0.15),transparent)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(30,100,200,0.11),transparent)]" />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        style={{
+          background:
+            "linear-gradient(115deg, var(--color-brand-blue) 0%, transparent 42%, var(--color-morocco-red) 58%, transparent 72%, var(--color-morocco-green) 100%)",
+        }}
+      />
       <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-8 lg:py-24">
         <div>
           <motion.p
@@ -70,7 +78,12 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.55, delay: 0.05 }}
         >
-          <PlaceholderImage label="Training center — professional learning environment" />
+          <SectionImage
+            src={marketingImages.hero}
+            alt={t.mediaAlt.hero}
+            priority
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
         </motion.div>
       </div>
     </section>

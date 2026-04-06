@@ -30,6 +30,18 @@ type Dictionary = {
     objectives: string;
     viewDetails: string;
   };
+  mediaAlt: {
+    hero: string;
+    aboutPreview: string;
+    aboutFacility: string;
+    teamCollaboration: string;
+    teamKitchen: string;
+    teamWorkshop: string;
+    serviceTraining: string;
+    serviceCoaching: string;
+    serviceWorkshop: string;
+    servicePlanning: string;
+  };
   home: {
     heroEyebrow: string;
     heroTitle: string;
@@ -124,6 +136,18 @@ export const translations: Record<Locale, Dictionary> = {
       tagline: "Hôtellerie · Management · Développement professionnel",
     },
     common: { objectives: "Objectifs", viewDetails: "Voir les détails" },
+    mediaAlt: {
+      hero: "Salle de cours et formation professionnelle en groupe",
+      aboutPreview: "Équipe professionnelle en réunion collaborative",
+      aboutFacility: "Espace lumineux pour la formation et les ateliers en entreprise",
+      teamCollaboration: "Animation de formation et collaboration en entreprise",
+      teamKitchen: "Cuisine professionnelle et brigade en service",
+      teamWorkshop: "Atelier d'équipe et session de travail encadrée",
+      serviceTraining: "Apprenants en formation professionnelle en salle",
+      serviceCoaching: "Échange et coaching professionnel en face à face",
+      serviceWorkshop: "Séminaire et présentation en petit groupe",
+      servicePlanning: "Analyse de documents et planification stratégique",
+    },
     home: {
       heroEyebrow: "Excellence professionnelle",
       heroTitle: "Développer les compétences de demain",
@@ -223,6 +247,18 @@ export const translations: Record<Locale, Dictionary> = {
       tagline: "Hospitality · Management · Professional development",
     },
     common: { objectives: "Objectives", viewDetails: "View details" },
+    mediaAlt: {
+      hero: "Classroom-based professional training session",
+      aboutPreview: "Professionals collaborating in a working session",
+      aboutFacility: "Bright workspace for corporate training and workshops",
+      teamCollaboration: "Facilitated training and team collaboration",
+      teamKitchen: "Professional kitchen and culinary brigade in action",
+      teamWorkshop: "Team workshop and facilitated working session",
+      serviceTraining: "Adult learners in a professional training setting",
+      serviceCoaching: "Professional coaching conversation",
+      serviceWorkshop: "Seminar room and group presentation",
+      servicePlanning: "Planning session reviewing documents and strategy",
+    },
     home: {
       heroEyebrow: "Professional excellence",
       heroTitle: "Empowering Skills for the Future",
@@ -322,6 +358,18 @@ export const translations: Record<Locale, Dictionary> = {
       tagline: "الضيافة · الإدارة · التطوير المهني",
     },
     common: { objectives: "الأهداف", viewDetails: "عرض التفاصيل" },
+    mediaAlt: {
+      hero: "قاعة تدريس وتكوين مهني جماعي",
+      aboutPreview: "فريق مهني في جلسة عمل تعاونية",
+      aboutFacility: "فضاء حديث للتكوين وورش المؤسسات",
+      teamCollaboration: "تنسيق تكوين وتفاعل بين المشاركين",
+      teamKitchen: "مطبخ مهني وفريق عمل أثناء الخدمة",
+      teamWorkshop: "ورشة عمل جماعية بإشراف ميسّر",
+      serviceTraining: "متدربون في إطار تكوين مهني",
+      serviceCoaching: "حوار وتوجيه مهني مباشر",
+      serviceWorkshop: "قاعة ندوة وعرض في مجموعة صغيرة",
+      servicePlanning: "تخطيط ومراجعات استراتيجية على الوثائق",
+    },
     home: {
       heroEyebrow: "التميز المهني",
       heroTitle: "تمكين مهارات المستقبل",

@@ -12,6 +12,8 @@ export const siteConfig = {
   defaultLocale: "fr",
   locales: ["fr", "en", "ar"],
   ogImage: "/opengraph-image",
+  /** Logo (PNG with transparency) — also used in JSON-LD */
+  logoPath: "/images/tef-maroc-logo.png",
   contact: {
     email: "contact@tef-maroc-legacy.ma",
     phone: "+212 5XX-XXXXXX",

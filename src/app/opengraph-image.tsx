@@ -18,13 +18,14 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "linear-gradient(135deg, #0f172a, #1e293b)",
+          background:
+            "linear-gradient(128deg, #0f3566 0%, #1e64c8 40%, #0f3566 62%, #006b3c 88%, #c1272d 100%)",
           color: "white",
           padding: "56px",
           fontFamily: "Arial, sans-serif",
         }}
       >
-        <div style={{ fontSize: 34, color: "#d4af37", fontWeight: 700 }}>TEF Maroc Legacy</div>
+        <div style={{ fontSize: 34, color: "#e8c547", fontWeight: 700 }}>TEF Maroc Legacy</div>
         <div style={{ fontSize: 64, fontWeight: 700, lineHeight: 1.2, maxWidth: "85%" }}>
           Hospitality & Management Training
         </div>
