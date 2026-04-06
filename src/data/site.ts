@@ -1,3 +1,4 @@
+/** Canonical site URL in prod. Set `NEXT_PUBLIC_SITE_URL` (e.g. https://www.example.com). Search console tokens: see `searchEngineVerification` in `@/i18n/metadata`. */
 const productionUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||

@@ -42,6 +42,14 @@ export function OrganizationJsonLd() {
       name: "Morocco",
     },
     inLanguage: siteConfig.locales,
+    knowsAbout: [
+      "Hospitality training",
+      "Hotel management",
+      "Restaurant service",
+      "Culinary arts",
+      "Food safety HACCP",
+      "Professional coaching Morocco",
+    ],
   };
   return (
     <script

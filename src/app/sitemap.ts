@@ -14,6 +14,28 @@ const paths = [
   "/contact",
 ];
 
+function sitemapPriority(path: string): number {
+  if (path === "") return 1;
+  if (path === "/about" || path === "/trainings" || path === "/services") return 0.95;
+  if (path === "/contact") return 0.9;
+  if (path.startsWith("/trainings/") || path.startsWith("/services/")) return 0.72;
+  return 0.85;
+}
+
+function sitemapChangeFrequency(path: string): MetadataRoute.Sitemap[0]["changeFrequency"] {
+  if (path === "") return "weekly";
+  if (
+    path.startsWith("/trainings/") ||
+    path.startsWith("/services/") ||
+    path === "/about" ||
+    path === "/trainings" ||
+    path === "/services"
+  ) {
+    return "monthly";
+  }
+  return "monthly";
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const base = siteConfig.url.replace(/\/$/, "");
@@ -31,8 +53,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       entries.push({
         url: `${base}/${locale}${suffix}`,
         lastModified: now,
-        changeFrequency: path === "" ? "weekly" : "monthly",
-        priority: path === "" ? 1 : 0.8,
+        changeFrequency: sitemapChangeFrequency(path),
+        priority: sitemapPriority(path),
         alternates: {
           languages,
         },

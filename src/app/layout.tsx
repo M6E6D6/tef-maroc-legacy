@@ -3,6 +3,7 @@ import { Inter, Noto_Sans_Arabic, Poppins } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
 import { siteConfig } from "@/data/site";
+import { searchEngineVerification } from "@/i18n/metadata";
 import { defaultLocale, locales, type Locale } from "@/i18n/translations";
 
 const inter = Inter({
@@ -31,6 +32,8 @@ export const viewport: Viewport = {
   themeColor: "#0f3566",
 };
 
+const verification = searchEngineVerification();
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.name,
@@ -41,17 +44,27 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     "formation Maroc",
+    "formation professionnelle Casablanca",
     "hôtellerie formation",
+    "formation restauration Maroc",
+    "coaching managérial Maroc",
+    "HACCP formation Maroc",
     "management cours",
     "TEF Maroc",
+    "TEF Maroc Legacy",
     "développement professionnel",
+    "école hôtelière Maroc",
     "école culinaire",
     "training Morocco",
-    "hospitality training",
+    "hospitality training Casablanca",
+    "professional training Morocco",
+    "تكوين مهني المغرب",
+    "تكوين الضيافة الدار البيضاء",
   ],
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
+  ...(verification ? { verification } : {}),
   openGraph: {
     type: "website",
     siteName: siteConfig.name,

@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { marketingImages } from "@/data/marketing-images";
 import { getTrainingCategories, getAllTrainingCategorySlugs, isTrainingCategorySlug } from "@/data/trainings";
 import { getTrainingArticle, trainingImageIndex } from "@/data/trainings-detail";
+import { TrainingCourseDetailJsonLd } from "@/components/seo/TrainingCourseDetailJsonLd";
 import { siteConfig } from "@/data/site";
 import { absoluteUrl, localeAlternates, ogAlternateLocales, ogLocaleFor } from "@/i18n/metadata";
 import { withLocale } from "@/i18n/routing";
@@ -71,7 +72,15 @@ export default async function TrainingDetailPage({ params }: Props) {
   const heroAlt = `${summary.title} — ${dict.trainingsPage.title}`;
 
   return (
-    <div className="bg-white">
+    <>
+      <TrainingCourseDetailJsonLd
+        locale={locale}
+        slug={slug}
+        name={article.meta.title[locale]}
+        description={article.meta.description[locale]}
+        timeRequired={summary.duration}
+      />
+      <div className="bg-white">
       <div className="border-b border-slate-100 bg-gradient-to-b from-slate-50 to-white">
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
           <Link
@@ -142,5 +151,6 @@ export default async function TrainingDetailPage({ params }: Props) {
         </aside>
       </article>
     </div>
+    </>
   );
 }

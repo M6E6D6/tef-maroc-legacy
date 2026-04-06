@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: siteConfig.name,
     short_name: "TEF Maroc",
     description: siteConfig.description,
-    start_url: "/",
+    start_url: `/${siteConfig.defaultLocale}`,
     display: "standalone",
     background_color: "#ffffff",
     theme_color: "#0f172a",
