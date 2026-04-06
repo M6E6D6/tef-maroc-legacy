@@ -26,4 +26,6 @@ export const siteConfig = {
   social: {
     linkedin: "https://www.linkedin.com",
   },
+  /** Google Search Console — HTML tag method; override with `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` if needed */
+  googleSiteVerification: "vyv24x7skFEJ6M5aRkivpepkuKByFxUnR8_VuftbOYE",
 };

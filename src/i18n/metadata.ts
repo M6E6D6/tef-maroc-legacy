@@ -3,13 +3,12 @@ import { siteConfig } from "@/data/site";
 import { defaultLocale, locales, type Locale } from "@/i18n/translations";
 
 /**
- * Optional verification tokens (set in hosting env). Google: Search Console → Ownership → HTML tag.
- * - NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
- * - NEXT_PUBLIC_BING_SITE_VERIFICATION (Bing Webmaster)
- * - NEXT_PUBLIC_YANDEX_SITE_VERIFICATION
+ * Search engine ownership meta tags. Google defaults to `siteConfig.googleSiteVerification`;
+ * set `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` to override. Bing / Yandex: hosting env only.
  */
 export function searchEngineVerification(): Metadata["verification"] | undefined {
-  const google = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+  const google =
+    process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() || siteConfig.googleSiteVerification;
   const yandex = process.env.NEXT_PUBLIC_YANDEX_SITE_VERIFICATION?.trim();
   const bing = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION?.trim();
 
