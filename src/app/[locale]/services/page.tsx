@@ -1,11 +1,14 @@
 "use client";
 
-import { BookMarked, MessageCircle, Presentation, Route } from "lucide-react";
+import { BookMarked, ChevronRight, MessageCircle, Presentation, Route } from "lucide-react";
+import Link from "next/link";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionImage } from "@/components/ui/SectionImage";
 import { marketingImages } from "@/data/marketing-images";
+import { SERVICE_SLUGS } from "@/data/services-detail";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useI18n } from "@/i18n/I18nProvider";
+import { withLocale } from "@/i18n/routing";
 
 const defaultServices = [
   {
@@ -75,32 +78,43 @@ export default function ServicesPage() {
             subtitle={t.servicesPage.subtitle}
           />
           <ul className="mt-12 grid gap-8 lg:grid-cols-2">
-            {services.map((s, i) => (
-              <li key={s.title}>
-                <FadeIn delay={i * 0.05}>
-                  <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md">
-                    <SectionImage
-                      src={marketingImages.services[i]!}
-                      alt={servicePhotoAlts[i]!}
-                      aspect="wide"
-                      className="rounded-none border-0 shadow-none"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                    />
-                    <div className="flex flex-1 flex-col p-6 sm:p-8">
-                      <div className="flex items-center gap-3">
-                        <span className="rounded-lg bg-[var(--color-navy)]/10 p-2 text-[var(--color-navy)]">
-                          <s.icon className="h-6 w-6" aria-hidden />
+            {services.map((s, i) => {
+              const slug = SERVICE_SLUGS[i]!;
+              const href = withLocale(locale, `/services/${slug}`);
+              return (
+                <li key={s.title}>
+                  <FadeIn delay={i * 0.05}>
+                    <Link
+                      href={href}
+                      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm outline-none ring-offset-2 transition hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--color-navy)]"
+                    >
+                      <SectionImage
+                        src={marketingImages.services[i]!}
+                        alt={servicePhotoAlts[i]!}
+                        aspect="wide"
+                        className="rounded-none border-0 shadow-none"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                      <div className="flex flex-1 flex-col p-6 sm:p-8">
+                        <div className="flex items-center gap-3">
+                          <span className="rounded-lg bg-[var(--color-navy)]/10 p-2 text-[var(--color-navy)]">
+                            <s.icon className="h-6 w-6" aria-hidden />
+                          </span>
+                          <h2 className="font-heading text-xl font-semibold text-[var(--color-navy)] group-hover:underline">
+                            {s.title}
+                          </h2>
+                        </div>
+                        <p className="mt-4 flex-1 text-slate-600">{s.text}</p>
+                        <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-[var(--color-navy)]">
+                          {t.common.viewDetails}
+                          <ChevronRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden />
                         </span>
-                        <h2 className="font-heading text-xl font-semibold text-[var(--color-navy)]">
-                          {s.title}
-                        </h2>
                       </div>
-                      <p className="mt-4 flex-1 text-slate-600">{s.text}</p>
-                    </div>
-                  </article>
-                </FadeIn>
-              </li>
-            ))}
+                    </Link>
+                  </FadeIn>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </section>

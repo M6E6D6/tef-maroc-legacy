@@ -1,5 +1,6 @@
 import { headers } from "next/headers";
-import { siteConfig } from "@/data/site";
+import { serviceBreadcrumbSegment } from "@/data/services-detail";
+import { trainingBreadcrumbSegment } from "@/data/trainings-detail";
 import { absoluteUrl } from "@/i18n/metadata";
 import { locales, type Locale } from "@/i18n/translations";
 
@@ -42,7 +43,11 @@ export async function BreadcrumbJsonLd() {
     { name: homeLabels[locale], url: absoluteUrl(`/${locale}`) },
   ];
 
-  const labels = segmentLabels[locale];
+  const labels: Record<string, string> = {
+    ...segmentLabels[locale],
+    ...serviceBreadcrumbSegment[locale],
+    ...trainingBreadcrumbSegment[locale],
+  };
   let pathAcc = `/${locale}`;
   for (let i = 1; i < parts.length; i++) {
     const seg = parts[i];

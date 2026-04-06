@@ -1,8 +1,18 @@
 import type { MetadataRoute } from "next";
+import { SERVICE_SLUGS } from "@/data/services-detail";
+import { TRAINING_CATEGORY_SLUGS } from "@/data/trainings";
 import { siteConfig } from "@/data/site";
 import { defaultLocale, locales } from "@/i18n/translations";
 
-const paths = ["", "/about", "/trainings", "/services", "/contact"];
+const paths = [
+  "",
+  "/about",
+  "/trainings",
+  ...TRAINING_CATEGORY_SLUGS.map((slug) => `/trainings/${slug}`),
+  "/services",
+  ...SERVICE_SLUGS.map((slug) => `/services/${slug}`),
+  "/contact",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

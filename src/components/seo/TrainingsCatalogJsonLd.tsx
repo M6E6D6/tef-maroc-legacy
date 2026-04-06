@@ -32,7 +32,7 @@ export function TrainingsCatalogJsonLd({ locale }: { locale: Locale }) {
           name: siteConfig.name,
           url: siteConfig.url,
         },
-        url: absoluteUrl(`/${locale}/trainings`),
+        url: absoluteUrl(`/${locale}/trainings/${cat.id}`),
       },
     })),
   };

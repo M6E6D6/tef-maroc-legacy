@@ -6,6 +6,27 @@ export type TrainingCategory = {
   objectives: string[];
 };
 
+/** Stable URL slugs; every category uses the same `id` in data arrays */
+export const TRAINING_CATEGORY_SLUGS = [
+  "reception-hospitality",
+  "kitchen-culinary",
+  "pastry",
+  "restaurant-service",
+  "maintenance",
+  "hygiene",
+  "management",
+] as const;
+
+export type TrainingCategorySlug = (typeof TRAINING_CATEGORY_SLUGS)[number];
+
+export function isTrainingCategorySlug(value: string): value is TrainingCategorySlug {
+  return (TRAINING_CATEGORY_SLUGS as readonly string[]).includes(value);
+}
+
+export function getAllTrainingCategorySlugs(): TrainingCategorySlug[] {
+  return [...TRAINING_CATEGORY_SLUGS];
+}
+
 const trainingCategoriesEn: TrainingCategory[] = [
   {
     id: "reception-hospitality",

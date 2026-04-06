@@ -102,12 +102,22 @@ type Dictionary = {
     howHelp: string;
     subtitle: string;
   };
+  servicesDetailPage: {
+    backToServices: string;
+    ctaIntro: string;
+    ctaContact: string;
+  };
   trainingsPage: {
     title: string;
     intro: string;
     eyebrow: string;
     categoriesObjectives: string;
     subtitle: string;
+  };
+  trainingsDetailPage: {
+    backToTrainings: string;
+    ctaIntro: string;
+    ctaContact: string;
   };
 };
 
@@ -215,12 +225,22 @@ export const translations: Record<Locale, Dictionary> = {
       howHelp: "Comment nous aidons",
       subtitle: "Combinez les services selon vos objectifs et votre budget.",
     },
+    servicesDetailPage: {
+      backToServices: "Retour aux services",
+      ctaIntro: "Discutons de votre contexte pour proposer la formule adaptée.",
+      ctaContact: "Nous contacter",
+    },
     trainingsPage: {
       title: "Catalogue des formations",
       intro: "Découvrez nos catégories de formation et adaptez les parcours à votre contexte.",
       eyebrow: "Programmes",
       categoriesObjectives: "Catégories et objectifs",
       subtitle: "Choisissez un parcours ou contactez-nous pour un plan sur mesure.",
+    },
+    trainingsDetailPage: {
+      backToTrainings: "Retour au catalogue",
+      ctaIntro: "Parlons de votre niveau actuel et du calendrier souhaité pour bâtir un parcours adapté.",
+      ctaContact: "Nous contacter",
     },
   },
   en: {
@@ -326,12 +346,22 @@ export const translations: Record<Locale, Dictionary> = {
       howHelp: "How we can help",
       subtitle: "Combine services to match your goals and budget.",
     },
+    servicesDetailPage: {
+      backToServices: "Back to services",
+      ctaIntro: "Tell us about your context so we can propose the right format.",
+      ctaContact: "Contact us",
+    },
     trainingsPage: {
       title: "Training catalogue",
       intro: "Explore our categories and tailor programs to your operational context.",
       eyebrow: "Programs",
       categoriesObjectives: "Categories & objectives",
       subtitle: "Select a track or contact us for a custom learning plan.",
+    },
+    trainingsDetailPage: {
+      backToTrainings: "Back to catalogue",
+      ctaIntro: "Share your current level and preferred timing so we can shape the right learning path.",
+      ctaContact: "Contact us",
     },
   },
   ar: {
@@ -430,12 +460,22 @@ export const translations: Record<Locale, Dictionary> = {
       howHelp: "كيف نساعدك",
       subtitle: "اجمع بين الخدمات حسب أهدافك وميزانيتك.",
     },
+    servicesDetailPage: {
+      backToServices: "العودة إلى الخدمات",
+      ctaIntro: "شاركونا سياقكم لنقترح الصيغة المناسبة.",
+      ctaContact: "اتصل بنا",
+    },
     trainingsPage: {
       title: "كتالوج التكوينات",
       intro: "اكتشف فئات التكوين وخصص المسارات وفق سياقك المهني.",
       eyebrow: "البرامج",
       categoriesObjectives: "الفئات والأهداف",
       subtitle: "اختر مسارا أو تواصل معنا لخطة تعلم مخصصة.",
+    },
+    trainingsDetailPage: {
+      backToTrainings: "العودة إلى الكتالوج",
+      ctaIntro: "شاركونا مستواكم الحالي والتوقيت المناسب لنصمم مساراً ملائماً.",
+      ctaContact: "اتصل بنا",
     },
   },
 };
