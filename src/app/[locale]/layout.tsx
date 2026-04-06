@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import { WebSiteJsonLd } from "@/components/seo/WebSiteJsonLd";
 import { siteConfig } from "@/data/site";
@@ -41,6 +42,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <I18nProvider locale={locale}>
       <OrganizationJsonLd />
       <WebSiteJsonLd />
+      <BreadcrumbJsonLd />
       <Navbar />
       <main id="main-content" className="flex-1" tabIndex={-1}>
         {children}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { TrainingsCatalogJsonLd } from "@/components/seo/TrainingsCatalogJsonLd";
 import { siteConfig } from "@/data/site";
 import { absoluteUrl, localeAlternates, ogLocaleFor } from "@/i18n/metadata";
 import { trainingsSeo } from "@/i18n/seo-copy";
@@ -31,6 +32,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default function TrainingsSegmentLayout({ children }: Props) {
-  return children;
+export default async function TrainingsSegmentLayout({ children, params }: Props) {
+  const { locale: l } = await params;
+  if (!locales.includes(l as Locale)) {
+    notFound();
+  }
+  const locale = l as Locale;
+
+  return (
+    <>
+      <TrainingsCatalogJsonLd locale={locale} />
+      {children}
+    </>
+  );
 }

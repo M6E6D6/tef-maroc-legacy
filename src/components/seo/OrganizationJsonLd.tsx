@@ -1,23 +1,46 @@
 import { siteConfig } from "@/data/site";
+import { absoluteUrl } from "@/i18n/metadata";
 
 export function OrganizationJsonLd() {
+  const orgId = `${siteConfig.url}/#organization`;
+  const logoUrl = absoluteUrl("/favicon.ico");
+  const linkedin = siteConfig.social.linkedin?.replace(/\/$/, "");
+  const cleanSameAs =
+    linkedin && linkedin !== "https://www.linkedin.com" ? [linkedin] : [];
+
   const data = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
+    "@id": orgId,
     name: siteConfig.name,
+    alternateName: "TEF Maroc",
     description: siteConfig.description,
     url: siteConfig.url,
+    logo: {
+      "@type": "ImageObject",
+      url: logoUrl,
+    },
+    image: logoUrl,
     email: siteConfig.contact.email,
     telephone: siteConfig.contact.phone,
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.contact.addressLine1,
       addressLocality: siteConfig.contact.city,
+      addressRegion: "Casablanca-Settat",
       postalCode: siteConfig.contact.postalCode,
       addressCountry: "MA",
     },
-    sameAs: [siteConfig.social.linkedin],
-    areaServed: "MA",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 33.5731,
+      longitude: -7.5898,
+    },
+    ...(cleanSameAs.length ? { sameAs: cleanSameAs } : {}),
+    areaServed: {
+      "@type": "Country",
+      name: "Morocco",
+    },
     inLanguage: siteConfig.locales,
   };
   return (

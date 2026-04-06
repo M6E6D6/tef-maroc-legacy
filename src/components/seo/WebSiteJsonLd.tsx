@@ -1,15 +1,25 @@
 import { siteConfig } from "@/data/site";
+import { absoluteUrl } from "@/i18n/metadata";
 
 export function WebSiteJsonLd() {
+  const websiteId = `${siteConfig.url}/#website`;
+  const orgId = `${siteConfig.url}/#organization`;
+  const contactUrl = absoluteUrl(`/${siteConfig.defaultLocale}/contact`);
+
   const data = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": websiteId,
     name: siteConfig.name,
     url: siteConfig.url,
     inLanguage: siteConfig.locales,
     publisher: {
-      "@type": "Organization",
-      name: siteConfig.name,
+      "@id": orgId,
+    },
+    potentialAction: {
+      "@type": "ContactAction",
+      name: "Contact",
+      target: contactUrl,
     },
   };
 

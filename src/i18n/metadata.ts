@@ -25,7 +25,71 @@ export function ogLocaleFor(locale: Locale): string {
   return "en_US";
 }
 
+export function ogAlternateLocales(locale: Locale): string[] {
+  return locales.filter((l) => l !== locale).map(ogLocaleFor);
+}
+
 export function absoluteUrl(path: string): string {
   const p = path.startsWith("/") ? path : `/${path}`;
   return `${siteConfig.url}${p}`;
+}
+
+type PageSeo = { title: string; description: string };
+
+/**
+ * Métadonnées complètes par page localisée (canonical, hreflang, Open Graph, Twitter).
+ */
+export function buildLocalePageMetadata(
+  locale: Locale,
+  pathSegment: "" | "/about" | "/trainings" | "/services" | "/contact",
+  seo: PageSeo,
+  keywords?: string[],
+): Metadata {
+  const pathForAlternates = pathSegment === "" ? "/" : pathSegment;
+  const urlPath = pathSegment === "" ? `/${locale}` : `/${locale}${pathSegment}`;
+
+  const base: Metadata = {
+    title: seo.title,
+    description: seo.description,
+    alternates: localeAlternates(locale, pathForAlternates),
+    openGraph: {
+      type: "website",
+      siteName: siteConfig.name,
+      title: `${seo.title} | ${siteConfig.name}`,
+      description: seo.description,
+      url: absoluteUrl(urlPath),
+      locale: ogLocaleFor(locale),
+      alternateLocale: ogAlternateLocales(locale),
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${siteConfig.name} — ${seo.title}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${seo.title} | ${siteConfig.name}`,
+      description: seo.description,
+      images: [siteConfig.ogImage],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
+  };
+
+  if (keywords?.length) {
+    return { ...base, keywords };
+  }
+  return base;
 }
