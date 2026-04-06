@@ -14,6 +14,7 @@ export function Footer() {
     { href: "/about", label: t.nav.about },
     { href: "/trainings", label: t.nav.trainings },
     { href: "/services", label: t.nav.services },
+    { href: "/blog", label: t.nav.blog },
     { href: "/contact", label: t.nav.contact },
   ];
   return (
@@ -21,13 +22,13 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           <div>
-            <div className="relative h-14 w-[280px] max-w-full sm:h-16 sm:w-[300px]">
+            <div className="relative h-16 w-full max-w-[min(100%,19.5rem)] sm:h-[4.5rem] sm:max-w-[min(100%,21rem)] md:h-[5rem] md:max-w-[min(100%,23rem)] lg:h-[5.5rem] lg:max-w-[min(100%,26rem)] xl:h-[6rem] xl:max-w-[min(100%,28rem)]">
               <Image
                 src={siteConfig.logoPath}
                 alt={siteConfig.name}
                 fill
-                className="object-contain object-left"
-                sizes="(max-width: 640px) 280px, 300px"
+                className="object-contain object-start"
+                sizes="(max-width: 639px) min(100vw, 320px), (max-width: 767px) min(100vw, 360px), (max-width: 1023px) min(100vw, 400px), (max-width: 1279px) min(100vw, 432px), min(448px, 28rem)"
               />
             </div>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-400">
