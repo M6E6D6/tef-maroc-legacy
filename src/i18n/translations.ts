@@ -155,11 +155,11 @@ export const translations: Record<Locale, Dictionary> = {
     },
     footer: {
       description:
-        "Formations professionnelles, coaching et développement des compétences en hôtellerie et management au Maroc.",
+        "Académie premium spécialisée en hôtellerie, restauration et service de luxe — formations professionnelles au Maroc.",
       quickLinks: "Liens rapides",
       contact: "Contact",
       rights: "Tous droits réservés.",
-      tagline: "Hôtellerie · Management · Développement professionnel",
+      tagline: "Hôtellerie · Restauration · Service de luxe",
     },
     common: { objectives: "Objectifs", viewDetails: "Voir les détails" },
     mediaAlt: {
@@ -177,10 +177,10 @@ export const translations: Record<Locale, Dictionary> = {
       blogFoodSafety: "Cuisine professionnelle et contrôle des denrées",
     },
     home: {
-      heroEyebrow: "Excellence professionnelle",
-      heroTitle: "Développer les compétences de demain",
+      heroEyebrow: "Excellence & hôtellerie de luxe",
+      heroTitle: "L’excellence au service de votre carrière",
       heroText:
-        "Formation, coaching et développement professionnel pour les équipes et les managers de l'hôtellerie.",
+        "Académie premium en hôtellerie, restauration et service de luxe — formations et accompagnement pour les équipes et les talents qui visent le plus haut niveau.",
       heroPrimaryCta: "Explorer les formations",
       heroSecondaryCta: "Nous contacter",
       aboutEyebrow: "À propos",
@@ -195,7 +195,7 @@ export const translations: Record<Locale, Dictionary> = {
       categoriesSubtitle:
         "Explorez des parcours en hôtellerie, opérations et leadership avec des compétences claires.",
       whyEyebrow: "Pourquoi nous",
-      whyTitle: "Pourquoi choisir TEF Maroc Legacy",
+      whyTitle: "Pourquoi choisir Tamuda Hospitality Academy",
       whySubtitle: "Un partenaire orienté résultats, pas seulement certificats.",
       testimonialsEyebrow: "Témoignages",
       testimonialsTitle: "Ce que disent nos partenaires",
@@ -292,11 +292,11 @@ export const translations: Record<Locale, Dictionary> = {
     },
     footer: {
       description:
-        "Professional training, coaching, and skill development in hospitality and management across Morocco.",
+        "Premium academy for hospitality, restaurant operations, and luxury service—professional training across Morocco.",
       quickLinks: "Quick links",
       contact: "Contact",
       rights: "All rights reserved.",
-      tagline: "Hospitality · Management · Professional development",
+      tagline: "Hospitality · Restaurants · Luxury service",
     },
     common: { objectives: "Objectives", viewDetails: "View details" },
     mediaAlt: {
@@ -314,10 +314,10 @@ export const translations: Record<Locale, Dictionary> = {
       blogFoodSafety: "Professional kitchen and food safety in action",
     },
     home: {
-      heroEyebrow: "Professional excellence",
-      heroTitle: "Empowering Skills for the Future",
+      heroEyebrow: "Premium hospitality academy",
+      heroTitle: "Excellence for your hospitality career",
       heroText:
-        "Training, coaching, and professional development for hospitality teams and leaders.",
+        "Specialized training in hotels, restaurants, and luxury service—for teams and leaders who demand world-class standards.",
       heroPrimaryCta: "Explore Trainings",
       heroSecondaryCta: "Contact us",
       aboutEyebrow: "About us",
@@ -332,7 +332,7 @@ export const translations: Record<Locale, Dictionary> = {
       categoriesSubtitle:
         "Explore pathways across hospitality, operations, and leadership with clear competencies.",
       whyEyebrow: "Why us",
-      whyTitle: "Why choose TEF Maroc Legacy",
+      whyTitle: "Why choose Tamuda Hospitality Academy",
       whySubtitle: "A partner focused on outcomes, not just certificates.",
       testimonialsEyebrow: "Testimonials",
       testimonialsTitle: "What partners say",
@@ -429,11 +429,11 @@ export const translations: Record<Locale, Dictionary> = {
     },
     footer: {
       description:
-        "تكوين مهني وتوجيه وتطوير المهارات في الضيافة والإدارة في المغرب.",
+        "أكاديمية راقية في الفندقة والمطاعم وخدمة الضيافة الفاخرة — تكوين مهني في المغرب.",
       quickLinks: "روابط سريعة",
       contact: "اتصال",
       rights: "جميع الحقوق محفوظة.",
-      tagline: "الضيافة · الإدارة · التطوير المهني",
+      tagline: "الفندقة · المطاعم · الخدمة الفاخرة",
     },
     common: { objectives: "الأهداف", viewDetails: "عرض التفاصيل" },
     mediaAlt: {
@@ -451,9 +451,10 @@ export const translations: Record<Locale, Dictionary> = {
       blogFoodSafety: "مطبخ مهني وسلامة غذائية",
     },
     home: {
-      heroEyebrow: "التميز المهني",
-      heroTitle: "تمكين مهارات المستقبل",
-      heroText: "تكوين وتوجيه وتطوير مهني لفرق الضيافة والإدارة.",
+      heroEyebrow: "أكاديمية ضيافة راقية",
+      heroTitle: "التميّز في مسارك المهني",
+      heroText:
+        "تكوين متخصص في الفندقة والمطاعم وخدمة الضيافة الفاخرة — للفرق والمواهب التي تطمح لأعلى المعايير.",
       heroPrimaryCta: "استكشف التكوينات",
       heroSecondaryCta: "تواصل معنا",
       aboutEyebrow: "من نحن",
@@ -465,7 +466,7 @@ export const translations: Record<Locale, Dictionary> = {
       categoriesTitle: "فئات التكوين",
       categoriesSubtitle: "مسارات في الضيافة والعمليات والقيادة بكفاءات واضحة.",
       whyEyebrow: "لماذا نحن",
-      whyTitle: "لماذا تختار TEF Maroc Legacy",
+      whyTitle: "لماذا تختار أكاديمية تامودا للضيافة",
       whySubtitle: "شريك يركز على النتائج وليس الشهادات فقط.",
       testimonialsEyebrow: "آراء العملاء",
       testimonialsTitle: "ماذا يقول شركاؤنا",

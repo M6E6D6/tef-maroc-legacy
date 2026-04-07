@@ -22,13 +22,15 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           <div>
-            <div className="relative h-16 w-full max-w-[min(100%,19.5rem)] sm:h-[4.5rem] sm:max-w-[min(100%,21rem)] md:h-[5rem] md:max-w-[min(100%,23rem)] lg:h-[5.5rem] lg:max-w-[min(100%,26rem)] xl:h-[6rem] xl:max-w-[min(100%,28rem)]">
+            <div className="flex h-20 w-full max-w-[min(100%,9.25rem)] items-center sm:h-[5.25rem] sm:max-w-[min(100%,10rem)] md:max-w-[min(100%,10.75rem)] lg:max-w-[min(100%,11.5rem)] xl:h-24">
               <Image
-                src={siteConfig.logoPath}
+                src={siteConfig.footerLogoPath}
                 alt={siteConfig.name}
-                fill
-                className="object-contain object-start"
-                sizes="(max-width: 639px) min(100vw, 320px), (max-width: 767px) min(100vw, 360px), (max-width: 1023px) min(100vw, 400px), (max-width: 1279px) min(100vw, 432px), min(448px, 28rem)"
+                width={siteConfig.logoWidth}
+                height={siteConfig.logoHeight}
+                className="h-full w-auto max-h-full max-w-full object-contain object-start"
+                quality={95}
+                sizes="(max-width: 639px) 160px, (max-width: 1023px) 180px, 200px"
               />
             </div>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-400">

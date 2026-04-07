@@ -20,18 +20,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
   const locale = l as Locale;
   const seo = homeSeo[locale];
+  const documentTitle = siteConfig.documentTitle[locale];
   return {
-    title: seo.title,
+    title: documentTitle,
     description: seo.description,
     alternates: localeAlternates(locale, "/"),
     openGraph: {
-      title: `${siteConfig.name} | ${seo.title}`,
+      title: documentTitle,
       description: seo.description,
       url: absoluteUrl(`/${locale}`),
       locale: ogLocaleFor(locale),
     },
     twitter: {
-      title: `${siteConfig.name} | ${seo.title}`,
+      title: documentTitle,
       description: seo.description,
     },
   };

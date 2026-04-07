@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/data/site";
 
-export const alt = `${siteConfig.name} - Training in Morocco`;
+export const alt = `${siteConfig.name} — Hôtellerie & restauration au Maroc`;
 export const size = {
   width: 1200,
   height: 630,
@@ -25,9 +25,9 @@ export default function OpenGraphImage() {
           fontFamily: "Arial, sans-serif",
         }}
       >
-        <div style={{ fontSize: 34, color: "#e8c547", fontWeight: 700 }}>TEF Maroc Legacy</div>
+        <div style={{ fontSize: 34, color: "#e8c547", fontWeight: 700 }}>{siteConfig.name}</div>
         <div style={{ fontSize: 64, fontWeight: 700, lineHeight: 1.2, maxWidth: "85%" }}>
-          Hospitality & Management Training
+          Hôtellerie, restauration & service de luxe
         </div>
         <div style={{ fontSize: 30, opacity: 0.9 }}>Casablanca, Morocco</div>
       </div>

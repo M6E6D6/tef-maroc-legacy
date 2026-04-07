@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
   // Re-enable for stricter double-render checks once you verify dev is clean.
   reactStrictMode: false,
   images: {
+    qualities: [75, 95],
     remotePatterns: [
       {
         protocol: "https",

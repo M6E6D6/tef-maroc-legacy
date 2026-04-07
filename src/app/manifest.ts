@@ -4,7 +4,7 @@ import { siteConfig } from "@/data/site";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: siteConfig.name,
-    short_name: "TEF Maroc",
+    short_name: "Tamuda",
     description: siteConfig.description,
     start_url: `/${siteConfig.defaultLocale}`,
     display: "standalone",

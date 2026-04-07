@@ -21,16 +21,21 @@ function NavbarInner() {
   const pathname = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [menuBarHidden, setMenuBarHidden] = useState(false);
+  const [scrollHidden, setScrollHidden] = useState(false);
   const lastScrollY = useRef(0);
   const { locale, t } = useI18n();
   const pathWithoutLocale = stripLocaleFromPathname(pathname);
+
+  /** Mobile drawer open: keep bar visible; otherwise follow scroll hide/show. */
+  const headerHidden = open ? false : scrollHidden;
 
   useEffect(() => {
     lastScrollY.current = typeof window !== "undefined" ? window.scrollY : 0;
   }, []);
 
   useEffect(() => {
+    if (open) return;
+
     let ticking = false;
     const onScroll = () => {
       if (ticking) return;
@@ -41,19 +46,19 @@ function NavbarInner() {
         const delta = y - lastScrollY.current;
         lastScrollY.current = y;
 
-        if (y < 40) {
-          setMenuBarHidden(false);
-        } else if (delta > 6) {
-          setMenuBarHidden(true);
-        } else if (delta < -6) {
-          setMenuBarHidden(false);
+        if (y < 48) {
+          setScrollHidden(false);
+        } else if (delta > 8) {
+          setScrollHidden(true);
+        } else if (delta < -8) {
+          setScrollHidden(false);
         }
       });
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [open]);
 
   const navLinks = [
     { href: "/", label: t.nav.home },
@@ -71,10 +76,12 @@ function NavbarInner() {
         : "text-[var(--foreground)]/80 hover:bg-[var(--color-brand-blue)]/8 hover:text-[var(--color-navy)]"
     }`;
 
-  const barDir = locale === "ar" ? "rtl" : "ltr";
-
   return (
-    <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-[var(--color-brand-blue)]/15 bg-white/95 shadow-sm shadow-[var(--color-navy)]/5 backdrop-blur-md">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 w-full border-b border-[var(--color-brand-blue)]/15 bg-white/95 shadow-sm shadow-[var(--color-navy)]/5 backdrop-blur-md transition-transform duration-300 ease-out motion-reduce:transition-none ${
+        headerHidden ? "-translate-y-[calc(100%+1px)]" : "translate-y-0"
+      }`}
+    >
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-[var(--color-navy)] focus:px-4 focus:py-2 focus:text-white rtl:focus:left-auto rtl:focus:right-4"
@@ -82,17 +89,17 @@ function NavbarInner() {
         {t.nav.skipToMain}
       </a>
 
-      <div className="mx-auto max-w-6xl px-4 pt-4 pb-3 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 pt-5 pb-4 sm:px-6 lg:px-8">
         {/*
-          One row: menu at inline-start, language at inline-end, logo centered.
-          Arabic uses dir="rtl" so the menu sits on the right and the language control on the left.
+          Mobile: [ burger | logo | lang ]. Desktop: [ logo | centered nav | lang ].
+          dir="ltr" keeps column order (logo left on desktop) stable for all locales; page text direction follows html[lang].
         */}
         <div
-          className="relative flex min-h-[3.75rem] items-center gap-2 sm:min-h-[4rem]"
-          dir={barDir}
+          className="relative grid min-h-[5.25rem] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 sm:gap-3 md:gap-6"
+          dir="ltr"
         >
-          {/* Inline-start: hamburger (mobile) + primary nav (desktop) */}
-          <div className="relative z-20 flex min-w-0 flex-1 items-center justify-start">
+          {/* Left: hamburger (mobile) / logo (desktop) */}
+          <div className="relative z-20 flex min-w-0 shrink-0 items-center justify-start">
             <button
               type="button"
               className="inline-flex shrink-0 items-center justify-center rounded-lg border border-[var(--color-brand-blue)]/25 bg-white p-2.5 text-[var(--color-navy)] md:hidden"
@@ -103,17 +110,48 @@ function NavbarInner() {
             >
               {open ? <X className="h-6 w-6" aria-hidden /> : <Menu className="h-6 w-6" aria-hidden />}
             </button>
+            <Link
+              href={withLocale(locale, "/")}
+              className="navbar-desktop-only-inline max-w-[7rem] shrink-0"
+              aria-label={`${siteConfig.name} — ${t.nav.home}`}
+            >
+              <Image
+                src={siteConfig.logoPath}
+                alt={siteConfig.name}
+                width={siteConfig.logoWidth}
+                height={siteConfig.logoHeight}
+                className="h-[5.25rem] w-auto max-h-[5.25rem] max-w-[6rem] shrink-0 object-contain object-left"
+                priority
+                quality={75}
+                sizes="112px"
+              />
+            </Link>
+          </div>
+
+          {/* Center: logo (mobile) / primary nav (desktop, centered) */}
+          <div className="relative z-10 flex min-h-[5.25rem] min-w-0 items-center justify-center overflow-visible">
+            <Link
+              href={withLocale(locale, "/")}
+              className="navbar-mobile-only shrink-0"
+              aria-label={`${siteConfig.name} — ${t.nav.home}`}
+            >
+              <Image
+                src={siteConfig.logoPath}
+                alt={siteConfig.name}
+                width={siteConfig.logoWidth}
+                height={siteConfig.logoHeight}
+                className="h-[5.25rem] w-auto max-h-[5.25rem] max-w-[6rem] shrink-0 object-contain object-center"
+                priority
+                quality={75}
+                sizes="112px"
+              />
+            </Link>
 
             <nav
-              className={`ms-1 hidden min-w-0 max-w-[min(100%,22rem)] overflow-hidden transition-[opacity,visibility] duration-300 ease-out sm:max-w-[min(100%,26rem)] md:ms-2 md:block md:max-w-[min(100%,32rem)] lg:max-w-[min(100%,40rem)] ${
-                menuBarHidden
-                  ? "md:invisible md:pointer-events-none md:opacity-0"
-                  : "md:opacity-100"
-              }`}
+              className="navbar-desktop-only-flex"
               aria-label={t.nav.primaryNavigation}
-              aria-hidden={menuBarHidden || undefined}
             >
-              <ul className="flex flex-wrap items-center gap-1 sm:gap-2">
+              <ul className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
                 {navLinks.map((link) => {
                   const href = withLocale(locale, link.href);
                   const active = pathname === href;
@@ -129,27 +167,8 @@ function NavbarInner() {
             </nav>
           </div>
 
-          {/* Center: logo */}
-          <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 w-[min(100%,calc(100vw-10.5rem))] max-w-[28rem] -translate-x-1/2 -translate-y-1/2 sm:w-[min(100%,calc(100vw-12rem))] sm:max-w-xl md:max-w-2xl lg:max-w-[42rem]">
-            <Link
-              href={withLocale(locale, "/")}
-              className="pointer-events-auto inline-flex w-full justify-center"
-              aria-label={`${siteConfig.name} — ${t.nav.home}`}
-            >
-              <Image
-                src={siteConfig.logoPath}
-                alt=""
-                width={430}
-                height={149}
-                className="h-16 w-auto max-w-full object-contain object-center sm:h-[4.75rem] md:h-[5.125rem] lg:h-[5.75rem]"
-                priority
-                sizes="(max-width: 640px) 280px, (max-width: 1024px) 360px, 430px"
-              />
-            </Link>
-          </div>
-
-          {/* Inline-end: language (select stays LTR so FR/EN/AR read predictably) */}
-          <div className="relative z-20 flex min-w-0 flex-1 items-center justify-end">
+          {/* Right: language */}
+          <div className="relative z-20 flex min-w-0 shrink-0 items-center justify-end">
             <label className="sr-only" htmlFor="language-select">
               {t.languageLabel}
             </label>

@@ -11,7 +11,7 @@ export function WebSiteJsonLd() {
     "@type": "WebSite",
     "@id": websiteId,
     name: siteConfig.name,
-    alternateName: ["TEF Maroc"],
+    alternateName: ["Tamuda", "Tamuda Academy"],
     description: siteConfig.description,
     url: siteConfig.url,
     inLanguage: siteConfig.locales,

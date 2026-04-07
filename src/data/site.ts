@@ -1,4 +1,7 @@
+import type { Locale } from "@/i18n/translations";
+
 /** Canonical site URL (sitemap, JSON-LD, robots). Prefer `NEXT_PUBLIC_SITE_URL`. */
+
 function resolveSiteUrl(): string {
   const explicit = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
   if (explicit) return explicit;
@@ -20,17 +23,37 @@ function resolveSiteUrl(): string {
 
 const productionUrl = resolveSiteUrl();
 
+/** Brand mark: `public/images/tamuda-hospitality-academy-logo.png` */
+const tamudaHospitalityAcademyLogo = "/images/tamuda-hospitality-academy-logo.png";
+
+/** Footer variant: `public/images/Tamuda Hospitality Academy-LOGO2-footer.png` */
+const tamudaFooterLogo = "/images/Tamuda Hospitality Academy-LOGO2-footer.png";
+
 export const siteConfig = {
-  name: "TEF Maroc Legacy",
-  tagline: "Training, coaching & professional development",
+  /** Public site / legal brand name */
+  name: "Tamuda Hospitality Academy",
+  /** Short line for PWA / social fallbacks */
+  tagline: "Académie premium — hôtellerie, restauration et service de luxe",
+  /** Default meta & JSON-LD (FR-first; align with positioning) */
   description:
-    "TEF Maroc Legacy empowers hospitality and management professionals through accredited training, coaching, and tailored skill development across Morocco.",
+    "Tamuda Hospitality Academy — académie premium spécialisée en hôtellerie, restauration et service de luxe. Formations professionnelles au Maroc.",
+  /** Full `<title>` for the localized home page */
+  documentTitle: {
+    fr: "Tamuda Hospitality Academy | Formations en Hôtellerie et Restauration au Maroc",
+    en: "Tamuda Hospitality Academy | Hospitality & Restaurant Training in Morocco",
+    ar: "أكاديمية تامودا للضيافة | تكوين الفندقة والمطاعم في المغرب",
+  } satisfies Record<Locale, string>,
   url: productionUrl,
   defaultLocale: "fr",
-  locales: ["fr", "en", "ar"],
+  locales: ["fr", "en", "ar"] as const satisfies readonly Locale[],
   ogImage: "/opengraph-image",
-  /** Logo (PNG with transparency) — also used in JSON-LD */
-  logoPath: "/images/tef-maroc-logo.png",
+  /** Logo (PNG with transparency) — navbar, JSON-LD, schema.org */
+  logoPath: tamudaHospitalityAcademyLogo,
+  /** Footer logo asset (may differ for contrast on dark band) */
+  footerLogoPath: tamudaFooterLogo,
+  /** Intrinsic size for logoPath / footerLogoPath (portrait PNGs) */
+  logoWidth: 466,
+  logoHeight: 672,
   contact: {
     email: "contact@tef-maroc-legacy.ma",
     phone: "+212 5XX-XXXXXX",

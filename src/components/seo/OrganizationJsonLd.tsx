@@ -13,7 +13,7 @@ export function OrganizationJsonLd() {
     "@type": "EducationalOrganization",
     "@id": orgId,
     name: siteConfig.name,
-    alternateName: "TEF Maroc",
+    alternateName: ["Tamuda", "Tamuda Academy"],
     description: siteConfig.description,
     url: siteConfig.url,
     logo: {
@@ -43,9 +43,11 @@ export function OrganizationJsonLd() {
     },
     inLanguage: siteConfig.locales,
     knowsAbout: [
-      "Hospitality training",
+      "Premium hospitality academy",
+      "Luxury hotel and restaurant service",
+      "Hospitality training Morocco",
       "Hotel management",
-      "Restaurant service",
+      "Fine dining service",
       "Culinary arts",
       "Food safety HACCP",
       "Professional coaching Morocco",

@@ -2,8 +2,8 @@
 
 :root {
   /* Space for fixed navbar (single row: menu | logo | language) */
-  --app-header-pad: 8.5rem;
-  /* Aligned with TEF Maroc logo: primary blues (TEF + tagline), flag accent (MA / ROC) */
+  --app-header-pad: 9rem;
+  /* Tamuda / brand blues + Morocco accent (reference palette) */
   --color-brand-blue: #1e64c8;
   --color-navy: #0f3566;
   --color-navy-light: #2563c4;
@@ -41,7 +41,41 @@ body {
 
 @media (min-width: 768px) {
   :root {
-    --app-header-pad: 9rem;
+    --app-header-pad: 9.5rem;
+  }
+}
+
+/* Navbar: explicit breakpoints so logo + desktop nav are not stuck on display:none
+   (Tailwind `hidden` + `md:flex` can resolve incorrectly in some builds). */
+.navbar-desktop-only-inline {
+  display: none;
+}
+
+.navbar-desktop-only-flex {
+  display: none;
+}
+
+.navbar-mobile-only {
+  display: inline-flex;
+}
+
+@media (min-width: 768px) {
+  .navbar-desktop-only-inline {
+    display: inline-flex;
+  }
+
+  .navbar-desktop-only-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .navbar-mobile-only {
+    display: none;
   }
 }
 
