@@ -1,71 +1,63 @@
 "use client";
 
 import Link from "next/link";
-import {
-  ChefHat,
-  ClipboardList,
-  ConciergeBell,
-  Hammer,
-  Handshake,
-  Sparkles,
-  UtensilsCrossed,
-} from "lucide-react";
-import { getTrainingCategories } from "@/data/trainings";
-import { FadeIn } from "@/components/ui/FadeIn";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { marketingImages } from "@/data/marketing-images";
+import { getTrainingCategories, type TrainingCategorySlug } from "@/data/trainings";
+import { trainingImageIndex } from "@/data/trainings-detail";
 import { useI18n } from "@/i18n/I18nProvider";
 import { withLocale } from "@/i18n/routing";
 
-const iconMap: Record<string, typeof ConciergeBell> = {
-  "reception-hospitality": ConciergeBell,
-  "kitchen-culinary": ChefHat,
-  pastry: Sparkles,
-  "restaurant-service": UtensilsCrossed,
-  maintenance: Hammer,
-  hygiene: ClipboardList,
-  management: Handshake,
-};
+/** Ratio 3:4 — padding % = (h/w)×100 = 4/3×100 */
+const ASPECT_PADDING_TOP = "133.3333%";
 
 export function TrainingCategories() {
   const { locale, t } = useI18n();
   const trainingCategories = getTrainingCategories(locale);
 
   return (
-    <section
-      className="border-y border-slate-100 bg-slate-50/80 py-16 sm:py-24"
-      aria-labelledby="categories-heading"
-    >
+    <section className="bg-world-dots py-16 sm:py-24" aria-labelledby="categories-heading">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          id="categories-heading"
-          eyebrow={t.home.categoriesEyebrow}
-          title={t.home.categoriesTitle}
-          subtitle={t.home.categoriesSubtitle}
-        />
-        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {trainingCategories.map((cat, i) => {
-            const Icon = iconMap[cat.id] ?? ConciergeBell;
+        <div className="text-center">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--tef-navy)]/80">
+            {t.home.categoriesEyebrow}
+          </p>
+          <h2
+            id="categories-heading"
+            className="font-heading mt-3 text-3xl font-bold uppercase tracking-tight text-[var(--tef-navy)] sm:text-4xl"
+          >
+            {t.home.categoriesTitle}
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-slate-600">{t.home.categoriesSubtitle}</p>
+        </div>
+        <ul className="mt-12 grid list-none grid-cols-2 gap-4 p-0 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          {trainingCategories.map((cat) => {
+            const imgIdx = trainingImageIndex[cat.id as TrainingCategorySlug];
+            const src = marketingImages.trainings[imgIdx]!;
+            const href = withLocale(locale, `/trainings/${cat.id}`);
             return (
-              <li key={cat.id}>
-                <FadeIn delay={i * 0.05}>
-                  <article className="group h-full rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm transition hover:border-[var(--color-gold)]/40 hover:shadow-md">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-navy)]/10 text-[var(--color-navy)] transition group-hover:bg-[var(--color-gold)]/15 group-hover:text-[var(--color-navy)]">
-                      <Icon className="h-6 w-6" aria-hidden />
-                    </div>
-                    <h3 className="font-heading mt-4 text-lg font-semibold text-[var(--color-navy)]">
+              <li key={cat.id} className="min-w-0">
+                <Link href={href} className="group block w-full no-underline">
+                  <figure className="relative w-full overflow-hidden rounded-2xl bg-slate-200 shadow-md ring-1 ring-slate-300/80 transition hover:ring-[var(--color-gold)]/60">
+                    {/* Bloc in-flow : sans ça, un parent avec seulement des enfants `absolute` peut avoir hauteur ~0 */}
+                    <div className="w-full" style={{ paddingTop: ASPECT_PADDING_TOP }} aria-hidden />
+                    <img
+                      src={src}
+                      alt=""
+                      width={600}
+                      height={800}
+                      loading="eager"
+                      decoding="async"
+                      className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    />
+                    <div
+                      className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/85 via-black/25 to-transparent"
+                      aria-hidden
+                    />
+                    <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] p-3 text-center font-heading text-[0.65rem] font-bold uppercase leading-snug text-white sm:p-4 sm:text-xs md:text-sm">
                       {cat.title}
-                    </h3>
-                    <p className="mt-2 line-clamp-3 text-sm text-slate-600">{cat.description}</p>
-                    <p className="mt-3 text-xs font-medium text-slate-500">{cat.duration}</p>
-                    <Link
-                      href={withLocale(locale, "/trainings")}
-                      className="mt-4 inline-block text-sm font-semibold text-[var(--color-gold)] transition hover:text-[var(--color-navy)]"
-                      aria-label={`View full details for ${cat.title}`}
-                    >
-                      {t.common.viewDetails} →
-                    </Link>
-                  </article>
-                </FadeIn>
+                    </figcaption>
+                  </figure>
+                </Link>
               </li>
             );
           })}

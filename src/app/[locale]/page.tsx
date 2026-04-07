@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AboutPreview } from "@/components/home/AboutPreview";
+import { ContactInfoBar } from "@/components/home/ContactInfoBar";
 import { Hero } from "@/components/home/Hero";
+import { PartnersStrip } from "@/components/home/PartnersStrip";
+import { ServicesHomeSplit } from "@/components/home/ServicesHomeSplit";
 import { Testimonials } from "@/components/home/Testimonials";
 import { TrainingCategories } from "@/components/home/TrainingCategories";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
@@ -49,9 +52,12 @@ export default async function HomePage({ params }: Props) {
     <>
       <HomeFaqJsonLd locale={locale} />
       <Hero />
+      <ContactInfoBar />
       <AboutPreview />
+      <ServicesHomeSplit />
       <TrainingCategories />
       <WhyChooseUs />
+      <PartnersStrip />
       <Testimonials />
     </>
   );

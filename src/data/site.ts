@@ -23,11 +23,11 @@ function resolveSiteUrl(): string {
 
 const productionUrl = resolveSiteUrl();
 
-/** Brand mark: `public/images/tamuda-hospitality-academy-logo.png` */
+/** Brand mark: `public/images/tamuda-hospitality-academy-logo.png` (navbar, JSON-LD) */
 const tamudaHospitalityAcademyLogo = "/images/tamuda-hospitality-academy-logo.png";
 
-/** Footer variant: `public/images/Tamuda Hospitality Academy-LOGO2-footer.png` */
-const tamudaFooterLogo = "/images/Tamuda Hospitality Academy-LOGO2-footer.png";
+/** Même fichier que le logo principal (footer exigeait autrefois un asset séparé). */
+const tamudaFooterLogo = tamudaHospitalityAcademyLogo;
 
 export const siteConfig = {
   /** Public site / legal brand name */
@@ -49,9 +49,9 @@ export const siteConfig = {
   ogImage: "/opengraph-image",
   /** Logo (PNG with transparency) — navbar, JSON-LD, schema.org */
   logoPath: tamudaHospitalityAcademyLogo,
-  /** Footer logo asset (may differ for contrast on dark band) */
+  /** `/images/tamuda-hospitality-academy-logo.png` — identique à `logoPath` */
   footerLogoPath: tamudaFooterLogo,
-  /** Intrinsic size for logoPath / footerLogoPath (portrait PNGs) */
+  /** Intrinsic size for logoPath / footerLogoPath (portrait PNG) */
   logoWidth: 466,
   logoHeight: 672,
   contact: {

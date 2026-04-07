@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { FloatingWidgets } from "@/components/layout/FloatingWidgets";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
@@ -56,6 +57,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         {children}
       </main>
       <Footer />
+      <FloatingWidgets />
     </I18nProvider>
   );
 }

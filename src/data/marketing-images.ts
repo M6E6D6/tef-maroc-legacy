@@ -1,8 +1,32 @@
 /**
- * Editorial photography (Unsplash license). Replace with your own shots when available.
+ * Local assets live in `public/images/`. Use `publicImage()` so spaces, `&`, and Unicode filenames are URL-safe.
  */
+export function publicImage(filename: string): string {
+  return `/images/${encodeURIComponent(filename)}`;
+}
+
+const heroSlides = [
+  "gettyimages-1181032344-612x612.jpg",
+  "hotellerie-restauration-lycee-lhil-lille-51-1024x683.jpg",
+  "FORMATION-TAMUDA HOSPITALITY ACADEMY.png",
+  "gettyimages-2149480352-612x612.jpg",
+] as const;
+
+/** Same order as `TRAINING_CATEGORY_SLUGS` / `trainingImageIndex` */
+const trainingFilenames = [
+  "FORMATION-Réception & Hospitalité.png",
+  "FORMATION-Cuisine & Arts culinaires.png",
+  "FORMATION-Pâtisserie.png",
+  "FORMATION-Restaurant & Service.png",
+  "FORMATION-Maintenance.png",
+  "FORMATION- Hygiène.png",
+  "FORMATION- Management HOTELIER.png",
+] as const;
+
 export const marketingImages = {
-  hero: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1400&q=82",
+  hero: publicImage(heroSlides[0]),
+  /** Full-bleed home hero carousel */
+  heroGallery: heroSlides.map((f) => publicImage(f)),
   aboutPreview:
     "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=82",
   aboutFacility:
@@ -24,13 +48,5 @@ export const marketingImages = {
     "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=82",
     "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1200&q=82",
   ],
-  trainings: [
-    "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=82",
-    "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=82",
-    "https://images.unsplash.com/photo-1466637574441-661b1af97380?auto=format&fit=crop&w=1200&q=82",
-    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=82",
-    "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=82",
-    "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&w=1200&q=82",
-    "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=82",
-  ],
+  trainings: trainingFilenames.map((f) => publicImage(f)),
 } as const;

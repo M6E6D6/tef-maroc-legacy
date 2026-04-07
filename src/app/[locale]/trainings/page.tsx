@@ -1,10 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { getTrainingCategories } from "@/data/trainings";
+import { marketingImages } from "@/data/marketing-images";
+import { getTrainingCategories, type TrainingCategorySlug } from "@/data/trainings";
+import { trainingImageIndex } from "@/data/trainings-detail";
 import { useI18n } from "@/i18n/I18nProvider";
 import { withLocale } from "@/i18n/routing";
 
@@ -40,8 +43,19 @@ export default function TrainingsPage() {
                   <FadeIn delay={i * 0.04}>
                     <Link
                       href={href}
-                      className="group block rounded-2xl border border-slate-200 bg-slate-50/50 p-6 shadow-sm outline-none ring-offset-2 transition hover:border-[var(--color-gold)]/35 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--color-navy)] sm:p-8"
+                      className="group block overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/50 shadow-sm outline-none ring-offset-2 transition hover:border-[var(--color-gold)]/35 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--color-navy)]"
                     >
+                      <div className="flex flex-col gap-0 sm:flex-row">
+                        <div className="relative aspect-[16/10] shrink-0 bg-slate-200 sm:aspect-auto sm:w-56 sm:min-h-[12rem]">
+                          <Image
+                            src={marketingImages.trainings[trainingImageIndex[cat.id as TrainingCategorySlug]]!}
+                            alt=""
+                            fill
+                            className="object-cover transition duration-300 group-hover:scale-[1.02] sm:object-cover"
+                            sizes="(max-width: 640px) 100vw, 224px"
+                          />
+                        </div>
+                        <div className="p-6 sm:flex-1 sm:p-8">
                       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                         <h2 className="font-heading text-xl font-semibold text-[var(--color-navy)] group-hover:underline sm:text-2xl">
                           {cat.title}
@@ -61,6 +75,8 @@ export default function TrainingsPage() {
                         {t.common.viewDetails}
                         <ChevronRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden />
                       </span>
+                        </div>
+                      </div>
                     </Link>
                   </FadeIn>
                 </li>

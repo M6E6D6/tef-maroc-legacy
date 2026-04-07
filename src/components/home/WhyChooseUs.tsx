@@ -30,10 +30,14 @@ export function WhyChooseUs() {
           ];
 
   return (
-    <section className="py-16 sm:py-24" aria-labelledby="why-heading">
+    <section
+      className="border-y border-slate-300/30 bg-[#d1d5db]/35 py-14 sm:py-20"
+      aria-labelledby="why-heading"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           id="why-heading"
+          align="center"
           eyebrow={t.home.whyEyebrow}
           title={t.home.whyTitle}
           subtitle={t.home.whySubtitle}
@@ -42,15 +46,12 @@ export function WhyChooseUs() {
           {items.map((item, i) => (
             <li key={item.title}>
               <FadeIn delay={i * 0.06}>
-                <div className="h-full rounded-2xl border border-transparent bg-white p-6 shadow-sm ring-1 ring-slate-100 transition hover:ring-[var(--color-gold)]/40">
-                  <item.icon
-                    className="h-8 w-8 text-[var(--color-gold)]"
-                    aria-hidden
-                  />
-                  <h3 className="font-heading mt-4 text-lg font-semibold text-[var(--color-navy)]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-600">{item.text}</p>
+                <div className="flex h-full flex-col items-center rounded-2xl bg-white/90 p-6 text-center shadow-sm ring-1 ring-slate-200/80 sm:p-7">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--tef-navy)]/10 text-[var(--tef-navy)]">
+                    <item.icon className="h-7 w-7" aria-hidden />
+                  </span>
+                  <h3 className="font-heading mt-4 text-base font-bold text-[var(--tef-navy)]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.text}</p>
                 </div>
               </FadeIn>
             </li>

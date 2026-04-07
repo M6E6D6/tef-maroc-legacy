@@ -22,16 +22,21 @@ function NavbarInner() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [scrollHidden, setScrollHidden] = useState(false);
+  const [atHeroTop, setAtHeroTop] = useState(true);
   const lastScrollY = useRef(0);
   const { locale, t } = useI18n();
   const pathWithoutLocale = stripLocaleFromPathname(pathname);
+  const isHome = pathWithoutLocale === "/";
+  /** Light nav labels only when home hero is visible behind the bar */
+  const lightNavText = isHome && atHeroTop && !open;
 
   /** Mobile drawer open: keep bar visible; otherwise follow scroll hide/show. */
   const headerHidden = open ? false : scrollHidden;
 
   useEffect(() => {
     lastScrollY.current = typeof window !== "undefined" ? window.scrollY : 0;
-  }, []);
+    setAtHeroTop(typeof window !== "undefined" ? window.scrollY < 72 : true);
+  }, [pathname]);
 
   useEffect(() => {
     if (open) return;
@@ -45,6 +50,8 @@ function NavbarInner() {
         const y = window.scrollY;
         const delta = y - lastScrollY.current;
         lastScrollY.current = y;
+
+        setAtHeroTop(y < 72);
 
         if (y < 48) {
           setScrollHidden(false);
@@ -70,17 +77,23 @@ function NavbarInner() {
   ];
 
   const linkClass = (active: boolean) =>
-    `rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
-      active
-        ? "bg-[var(--color-brand-blue)]/12 text-[var(--color-navy)] ring-1 ring-[var(--color-morocco-green)]/35"
-        : "text-[var(--foreground)]/80 hover:bg-[var(--color-brand-blue)]/8 hover:text-[var(--color-navy)]"
-    }`;
+    lightNavText
+      ? `rounded-lg px-3 py-2 text-sm font-semibold uppercase tracking-wide transition-colors ${
+          active
+            ? "text-white underline decoration-[var(--color-brand-blue)] decoration-2 underline-offset-8"
+            : "text-white/90 hover:text-white"
+        }`
+      : `rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
+          active
+            ? "bg-[var(--color-brand-blue)]/12 text-[var(--color-navy)] ring-1 ring-[var(--color-morocco-green)]/35"
+            : "text-[var(--foreground)]/80 hover:bg-[var(--color-brand-blue)]/8 hover:text-[var(--color-navy)]"
+        }`;
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 w-full border-b border-[var(--color-brand-blue)]/15 bg-white/95 shadow-sm shadow-[var(--color-navy)]/5 backdrop-blur-md transition-transform duration-300 ease-out motion-reduce:transition-none ${
+      className={`fixed inset-x-0 top-0 z-50 w-full transition-transform duration-300 ease-out motion-reduce:transition-none ${
         headerHidden ? "-translate-y-[calc(100%+1px)]" : "translate-y-0"
-      }`}
+      } border-b border-[var(--color-brand-blue)]/15 bg-transparent shadow-none backdrop-blur-md`}
     >
       <a
         href="#main-content"
@@ -102,7 +115,11 @@ function NavbarInner() {
           <div className="relative z-20 flex min-w-0 shrink-0 items-center justify-start">
             <button
               type="button"
-              className="inline-flex shrink-0 items-center justify-center rounded-lg border border-[var(--color-brand-blue)]/25 bg-white p-2.5 text-[var(--color-navy)] md:hidden"
+              className={`inline-flex shrink-0 items-center justify-center rounded-lg p-2.5 md:hidden ${
+                lightNavText
+                  ? "border border-white/35 bg-black/15 text-white"
+                  : "border border-[var(--color-brand-blue)]/25 bg-white/60 text-[var(--color-navy)] backdrop-blur-sm"
+              }`}
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-controls="mobile-nav"
@@ -175,7 +192,11 @@ function NavbarInner() {
             <select
               id="language-select"
               dir="ltr"
-              className="min-w-[4.25rem] rounded-lg border border-[var(--color-brand-blue)]/25 bg-white px-2 py-2 text-center text-sm font-semibold uppercase tracking-wide text-[var(--color-navy)] shadow-sm focus:border-[var(--color-brand-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-blue)]/25"
+              className={`min-w-[4.25rem] rounded-lg px-2 py-2 text-center text-sm font-semibold uppercase tracking-wide shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-blue)]/25 ${
+                lightNavText
+                  ? "border border-white/35 bg-white/90 text-[var(--color-navy)] focus:border-white"
+                  : "border border-[var(--color-brand-blue)]/25 bg-white/85 text-[var(--color-navy)] backdrop-blur-sm focus:border-[var(--color-brand-blue)]"
+              }`}
               value={locale}
               onChange={(e) => {
                 const next = e.target.value as Locale;

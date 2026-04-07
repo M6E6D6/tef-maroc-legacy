@@ -26,6 +26,10 @@ type Dictionary = {
     contact: string;
     rights: string;
     tagline: string;
+    columnAbout: string;
+    columnServices: string;
+    columnInfo: string;
+    columnContact: string;
   };
   common: {
     objectives: string;
@@ -51,6 +55,11 @@ type Dictionary = {
     heroText: string;
     heroPrimaryCta: string;
     heroSecondaryCta: string;
+    heroGalleryPrevAria: string;
+    heroGalleryNextAria: string;
+    featureSolidTitle: string;
+    featureRelationsTitle: string;
+    featureInnovationTitle: string;
     aboutEyebrow: string;
     aboutTitle: string;
     aboutSubtitle: string;
@@ -65,6 +74,10 @@ type Dictionary = {
     testimonialsEyebrow: string;
     testimonialsTitle: string;
     testimonialsSubtitle: string;
+    infoBarClockLabel: string;
+    infoBarClockValue: string;
+    partnersTitle: string;
+    servicesSplitCta: string;
   };
   contact: {
     title: string;
@@ -83,6 +96,11 @@ type Dictionary = {
     formSubmit: string;
     formSuccess: string;
     formAriaLabel: string;
+    formFirstName: string;
+    formLastName: string;
+    formSubject: string;
+    cardKicker: string;
+    cardHeading: string;
   };
   aboutPage: {
     title: string;
@@ -134,6 +152,11 @@ type Dictionary = {
     ctaIntro: string;
     ctaContact: string;
   };
+  floating: {
+    consultantLabel: string;
+    whatsappAria: string;
+    backToTopAria: string;
+  };
 };
 
 export const translations: Record<Locale, Dictionary> = {
@@ -160,6 +183,10 @@ export const translations: Record<Locale, Dictionary> = {
       contact: "Contact",
       rights: "Tous droits réservés.",
       tagline: "Hôtellerie · Restauration · Service de luxe",
+      columnAbout: "Qui sommes-nous",
+      columnServices: "Nos services",
+      columnInfo: "Informations",
+      columnContact: "Contact",
     },
     common: { objectives: "Objectifs", viewDetails: "Voir les détails" },
     mediaAlt: {
@@ -178,11 +205,16 @@ export const translations: Record<Locale, Dictionary> = {
     },
     home: {
       heroEyebrow: "Excellence & hôtellerie de luxe",
-      heroTitle: "L’excellence au service de votre carrière",
+      heroTitle: "L’expertise terrain",
       heroText:
-        "Académie premium en hôtellerie, restauration et service de luxe — formations et accompagnement pour les équipes et les talents qui visent le plus haut niveau.",
-      heroPrimaryCta: "Explorer les formations",
+        "Des formations professionnelles conçues pour améliorer la performance de vos équipes.",
+      heroPrimaryCta: "Consulter le catalogue",
       heroSecondaryCta: "Nous contacter",
+      heroGalleryPrevAria: "Image précédente",
+      heroGalleryNextAria: "Image suivante",
+      featureSolidTitle: "Compétences solides",
+      featureRelationsTitle: "Relations durables",
+      featureInnovationTitle: "Innovation continue",
       aboutEyebrow: "À propos",
       aboutTitle: "Conçu pour la performance terrain",
       aboutSubtitle:
@@ -200,6 +232,10 @@ export const translations: Record<Locale, Dictionary> = {
       testimonialsEyebrow: "Témoignages",
       testimonialsTitle: "Ce que disent nos partenaires",
       testimonialsSubtitle: "La confiance d'équipes exigeantes sur l'expérience client.",
+      infoBarClockLabel: "Horaires",
+      infoBarClockValue: "Sur rendez-vous",
+      partnersTitle: "Nos références",
+      servicesSplitCta: "Découvrir tous les services",
     },
     contact: {
       title: "Contact",
@@ -218,6 +254,11 @@ export const translations: Record<Locale, Dictionary> = {
       formSubmit: "Envoyer le message",
       formSuccess: "Merci, votre message a été enregistré. Nous vous recontacterons bientôt.",
       formAriaLabel: "Formulaire de contact",
+      formFirstName: "Prénom",
+      formLastName: "Nom",
+      formSubject: "Sujet",
+      cardKicker: "Votre contact",
+      cardHeading: "Contactez-nous",
     },
     aboutPage: {
       title: "À propos de",
@@ -273,6 +314,11 @@ export const translations: Record<Locale, Dictionary> = {
       ctaIntro: "Un projet de formation ou d’accompagnement ? Échangeons sur vos objectifs.",
       ctaContact: "Nous contacter",
     },
+    floating: {
+      consultantLabel: "Votre conseiller",
+      whatsappAria: "Contacter via WhatsApp",
+      backToTopAria: "Retour en haut de la page",
+    },
   },
   en: {
     languageLabel: "Language",
@@ -297,6 +343,10 @@ export const translations: Record<Locale, Dictionary> = {
       contact: "Contact",
       rights: "All rights reserved.",
       tagline: "Hospitality · Restaurants · Luxury service",
+      columnAbout: "About Us",
+      columnServices: "Our services",
+      columnInfo: "Information",
+      columnContact: "Contact",
     },
     common: { objectives: "Objectives", viewDetails: "View details" },
     mediaAlt: {
@@ -315,11 +365,15 @@ export const translations: Record<Locale, Dictionary> = {
     },
     home: {
       heroEyebrow: "Premium hospitality academy",
-      heroTitle: "Excellence for your hospitality career",
-      heroText:
-        "Specialized training in hotels, restaurants, and luxury service—for teams and leaders who demand world-class standards.",
-      heroPrimaryCta: "Explore Trainings",
+      heroTitle: "Field expertise",
+      heroText: "Professional training designed to improve your teams’ performance.",
+      heroPrimaryCta: "View the catalogue",
       heroSecondaryCta: "Contact us",
+      heroGalleryPrevAria: "Previous slide",
+      heroGalleryNextAria: "Next slide",
+      featureSolidTitle: "Solid skills",
+      featureRelationsTitle: "Lasting relationships",
+      featureInnovationTitle: "Continuous innovation",
       aboutEyebrow: "About us",
       aboutTitle: "Built for real-world performance",
       aboutSubtitle:
@@ -337,6 +391,10 @@ export const translations: Record<Locale, Dictionary> = {
       testimonialsEyebrow: "Testimonials",
       testimonialsTitle: "What partners say",
       testimonialsSubtitle: "Trusted by teams who care about guest experience and people development.",
+      infoBarClockLabel: "Hours",
+      infoBarClockValue: "By appointment",
+      partnersTitle: "Our references",
+      servicesSplitCta: "See all services",
     },
     contact: {
       title: "Contact",
@@ -355,6 +413,11 @@ export const translations: Record<Locale, Dictionary> = {
       formSubmit: "Send message",
       formSuccess: "Thank you, your message has been recorded. We will get back to you shortly.",
       formAriaLabel: "Contact form",
+      formFirstName: "First name",
+      formLastName: "Last name",
+      formSubject: "Subject",
+      cardKicker: "Your consultant",
+      cardHeading: "Contact Us",
     },
     aboutPage: {
       title: "About",
@@ -410,6 +473,11 @@ export const translations: Record<Locale, Dictionary> = {
       ctaIntro: "Planning training or coaching? Tell us about your goals.",
       ctaContact: "Contact us",
     },
+    floating: {
+      consultantLabel: "Your consultant",
+      whatsappAria: "Contact us on WhatsApp",
+      backToTopAria: "Back to top",
+    },
   },
   ar: {
     languageLabel: "اللغة",
@@ -434,6 +502,10 @@ export const translations: Record<Locale, Dictionary> = {
       contact: "اتصال",
       rights: "جميع الحقوق محفوظة.",
       tagline: "الفندقة · المطاعم · الخدمة الفاخرة",
+      columnAbout: "من نحن",
+      columnServices: "خدماتنا",
+      columnInfo: "معلومات",
+      columnContact: "اتصل بنا",
     },
     common: { objectives: "الأهداف", viewDetails: "عرض التفاصيل" },
     mediaAlt: {
@@ -452,11 +524,15 @@ export const translations: Record<Locale, Dictionary> = {
     },
     home: {
       heroEyebrow: "أكاديمية ضيافة راقية",
-      heroTitle: "التميّز في مسارك المهني",
-      heroText:
-        "تكوين متخصص في الفندقة والمطاعم وخدمة الضيافة الفاخرة — للفرق والمواهب التي تطمح لأعلى المعايير.",
-      heroPrimaryCta: "استكشف التكوينات",
+      heroTitle: "الخبرة الميدانية",
+      heroText: "تكوينات مهنية مصمّمة لرفع أداء فرقكم.",
+      heroPrimaryCta: "استعراض الكتالوج",
       heroSecondaryCta: "تواصل معنا",
+      heroGalleryPrevAria: "الشريحة السابقة",
+      heroGalleryNextAria: "الشريحة التالية",
+      featureSolidTitle: "كفاءات راسخة",
+      featureRelationsTitle: "علاقات دائمة",
+      featureInnovationTitle: "ابتكار مستمر",
       aboutEyebrow: "من نحن",
       aboutTitle: "مصمم للأداء العملي",
       aboutSubtitle: "نمزج الخبرة الميدانية مع منهجية تعليمية منظمة لتطبيق المهارات مباشرة.",
@@ -471,6 +547,10 @@ export const translations: Record<Locale, Dictionary> = {
       testimonialsEyebrow: "آراء العملاء",
       testimonialsTitle: "ماذا يقول شركاؤنا",
       testimonialsSubtitle: "موثوق من فرق تهتم بتجربة الضيف وتطوير الموارد البشرية.",
+      infoBarClockLabel: "الأوقات",
+      infoBarClockValue: "حسب الموعد",
+      partnersTitle: "مراجعنا",
+      servicesSplitCta: "اكتشف كل الخدمات",
     },
     contact: {
       title: "اتصل بنا",
@@ -489,6 +569,11 @@ export const translations: Record<Locale, Dictionary> = {
       formSubmit: "إرسال الرسالة",
       formSuccess: "شكرا، تم تسجيل رسالتك. سنعاود الاتصال بك قريبا.",
       formAriaLabel: "نموذج الاتصال",
+      formFirstName: "الاسم الأول",
+      formLastName: "اسم العائلة",
+      formSubject: "الموضوع",
+      cardKicker: "مستشاركم",
+      cardHeading: "تواصل معنا",
     },
     aboutPage: {
       title: "حول",
@@ -539,6 +624,11 @@ export const translations: Record<Locale, Dictionary> = {
       backToBlog: "العودة إلى المدونة",
       ctaIntro: "مشروع تكوين أو مرافقة؟ شاركونا أهدافكم.",
       ctaContact: "اتصل بنا",
+    },
+    floating: {
+      consultantLabel: "مستشاركم",
+      whatsappAria: "التواصل عبر واتساب",
+      backToTopAria: "العودة لأعلى الصفحة",
     },
   },
 };
