@@ -6,17 +6,17 @@ export const homeSeo: Record<Locale, SeoEntry> = {
   fr: {
     title: "Accueil",
     description:
-      "Tamuda Hospitality Academy à Casablanca : académie premium en hôtellerie, restauration et service de luxe. Formations professionnelles, parcours modulaires et accompagnement des entreprises au Maroc.",
+      "Tamuda Hospitality Academy à Tamuda Bay (M'diq) : académie premium en hôtellerie, restauration et service de luxe. Formations professionnelles, parcours modulaires et accompagnement des entreprises au Maroc.",
   },
   en: {
     title: "Home",
     description:
-      "Tamuda Hospitality Academy in Casablanca: a premium academy for hospitality, restaurants, and luxury service—professional training, modular programs, and corporate pathways across Morocco.",
+      "Tamuda Hospitality Academy in Tamuda Bay (M'diq): a premium academy for hospitality, restaurants, and luxury service—professional training, modular programs, and corporate pathways across Morocco.",
   },
   ar: {
     title: "الرئيسية",
     description:
-      "أكاديمية تامودا للضيافة بالدار البيضاء: تكوين راقٍ في الفندقة والمطاعم وخدمة الضيافة الفاخرة. برامج مهنية ومسارات مرنة للشركات في المغرب.",
+      "أكاديمية تامودا للضيافة في تامودا باي (المضيق): تكوين راقٍ في الفندقة والمطاعم وخدمة الضيافة الفاخرة. برامج مهنية ومسارات مرنة للشركات في المغرب.",
   },
 };
 
@@ -96,17 +96,17 @@ export const contactSeo: Record<Locale, SeoEntry> = {
   fr: {
     title: "Contact",
     description:
-      "Contactez Tamuda Hospitality Academy à Casablanca : devis formation, informations catalogue et accompagnement entreprise. Formulaire, téléphone et adresse.",
+      "Contactez Tamuda Hospitality Academy à Tamuda Bay (M'diq) : devis formation, informations catalogue et accompagnement entreprise. Formulaire, téléphone et adresse.",
   },
   en: {
     title: "Contact",
     description:
-      "Contact Tamuda Hospitality Academy in Casablanca for training quotes, program details, and corporate support—form, phone, and address.",
+      "Contact Tamuda Hospitality Academy in Tamuda Bay (M'diq) for training quotes, program details, and corporate support—form, phone, and address.",
   },
   ar: {
     title: "اتصل بنا",
     description:
-      "تواصل مع أكاديمية تامودا للضيافة بالدار البيضاء لعرض أسعار التكوين أو الاستفسارات أو دعم الشركات.",
+      "تواصل مع أكاديمية تامودا للضيافة في تامودا باي (المضيق) لعرض أسعار التكوين أو الاستفسارات أو دعم الشركات.",
   },
 };
 
@@ -114,7 +114,7 @@ export const homeKeywords: Record<Locale, string[]> = {
   fr: [
     "Tamuda Hospitality Academy",
     "formation hôtellerie Maroc",
-    "formation restauration Casablanca",
+    "formation restauration M'diq",
     "académie hôtelière Maroc",
     "service de luxe formation",
     "école hôtelière Maroc",
@@ -124,14 +124,14 @@ export const homeKeywords: Record<Locale, string[]> = {
     "Tamuda Hospitality Academy",
     "hospitality academy Morocco",
     "luxury service training",
-    "hotel school Casablanca",
+    "hotel school M'diq",
     "restaurant training Morocco",
     "HACCP training Morocco",
   ],
   ar: [
     "أكاديمية تامودا للضيافة",
     "تكوين فندقة المغرب",
-    "تكوين مطاعم الدار البيضاء",
+    "تكوين مطاعم المضيق",
     "خدمة فاخرة تكوين",
   ],
 };
@@ -167,9 +167,9 @@ export const servicesKeywords: Record<Locale, string[]> = {
 };
 
 export const contactKeywords: Record<Locale, string[]> = {
-  fr: ["contact formation Casablanca", "devis formation entreprise Maroc"],
+  fr: ["contact formation M'diq", "devis formation entreprise Maroc"],
   en: ["contact training Morocco", "request quote hospitality training"],
-  ar: ["اتصال تكوين الدار البيضاء"],
+  ar: ["اتصال تكوين المضيق"],
 };
 
 /** Données FAQ structurées (schema.org FAQPage) — page d’accueil uniquement */

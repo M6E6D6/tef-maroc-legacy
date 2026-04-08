@@ -4,8 +4,7 @@ import { ContactForm } from "@/components/contact/ContactForm";
 import { siteConfig } from "@/data/site";
 import { useI18n } from "@/i18n/I18nProvider";
 
-const mapEmbedUrl =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d212813.7182007677!2d-7.7640437!3d33.5731104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda62d378d31fce9%3A0x327f3c5e3e0e0e0e!2sCasablanca%2C%20Morocco!5e0!3m2!1sen!2sma!4v1700000000000!5m2!1sen!2sma";
+const mapEmbedUrl = "https://maps.google.com/maps?q=35.685,-5.3247&z=16&output=embed";
 
 export default function ContactPage() {
   const { t } = useI18n();

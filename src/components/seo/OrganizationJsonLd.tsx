@@ -27,14 +27,14 @@ export function OrganizationJsonLd() {
       "@type": "PostalAddress",
       streetAddress: siteConfig.contact.addressLine1,
       addressLocality: siteConfig.contact.city,
-      addressRegion: "Casablanca-Settat",
+      addressRegion: "Tanger-Tetouan-Al Hoceima",
       postalCode: siteConfig.contact.postalCode,
       addressCountry: "MA",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 33.5731,
-      longitude: -7.5898,
+      latitude: 35.685,
+      longitude: -5.3247,
     },
     ...(cleanSameAs.length ? { sameAs: cleanSameAs } : {}),
     areaServed: {

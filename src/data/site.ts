@@ -56,11 +56,11 @@ export const siteConfig = {
   logoHeight: 672,
   contact: {
     email: "contact@tef-maroc-legacy.ma",
-    phone: "+212 5XX-XXXXXX",
-    addressLine1: "Avenue Mohammed V, Quartier Centre",
-    city: "Casablanca",
+    phone: "+212770064271",
+    addressLine1: "Tamuda Bay",
+    city: "M'diq",
     country: "Morocco",
-    postalCode: "20000",
+    postalCode: "93200",
   },
   social: {
     linkedin: "https://www.linkedin.com",
