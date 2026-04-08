@@ -18,7 +18,7 @@ function resolveSiteUrl(): string {
     return `https://${process.env.VERCEL_URL}`;
   }
 
-  return "https://tef-maroc-legacy-f7t8.vercel.app";
+  return "https://tef-maroc-legacy.vercel.app";
 }
 
 const productionUrl = resolveSiteUrl();
