@@ -18,6 +18,14 @@ function isAssetOrSeoPath(pathname: string): boolean {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Keep locale-prefixed sitemap URL working without adding a metadata route under [locale].
+  // Example: /fr/sitemap.xml -> /sitemap.xml
+  if (/^\/(fr|en|ar)\/sitemap\.xml$/i.test(pathname)) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/sitemap.xml";
+    return NextResponse.redirect(url, 308);
+  }
+
   if (isAssetOrSeoPath(pathname)) {
     const res = NextResponse.next();
     res.headers.set("x-pathname", pathname);
