@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     "luxury hospitality Morocco",
     "professional training Morocco",
     "تكوين مهني المغرب",
-    "تكوين الضيافة الدار البيضاء",
+    "تكوين الضيافة المضيق",
     "أكاديمية تامودا",
   ],
   authors: [{ name: siteConfig.name }],
