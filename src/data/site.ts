@@ -36,7 +36,7 @@ export const siteConfig = {
   tagline: "Académie premium — hôtellerie, restauration et service de luxe",
   /** Default meta & JSON-LD (FR-first; align with positioning) */
   description:
-    "Tamuda Hospitality Academy — académie premium spécialisée en hôtellerie, restauration et service de luxe. Formations professionnelles au Maroc.",
+    "Tamuda Hospitality Academy — formation hôtellerie Maroc, école restauration et service de luxe. Académie premium à Tamuda Bay (M'diq), près de Tanger : parcours professionnels pour entreprises et équipes.",
   /** Full `<title>` for the localized home page */
   documentTitle: {
     fr: "Tamuda Hospitality Academy | Formations en Hôtellerie et Restauration au Maroc",

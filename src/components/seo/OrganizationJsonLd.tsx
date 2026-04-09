@@ -43,14 +43,19 @@ export function OrganizationJsonLd() {
     },
     inLanguage: siteConfig.locales,
     knowsAbout: [
+      "Formation hôtellerie Maroc",
+      "École restauration Maroc",
       "Premium hospitality academy",
       "Luxury hotel and restaurant service",
       "Hospitality training Morocco",
+      "Restaurant school Morocco",
       "Hotel management",
       "Fine dining service",
       "Culinary arts",
       "Food safety HACCP",
       "Professional coaching Morocco",
+      "تكوين فندقة المغرب",
+      "مدرسة مطاعم المغرب",
     ],
   };
   return (

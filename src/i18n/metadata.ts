@@ -56,6 +56,46 @@ export function absoluteUrl(path: string): string {
   return `${siteConfig.url}${p}`;
 }
 
+/**
+ * Open Graph + Twitter Card complets (images, hreflang OG, siteName) pour une URL localisée.
+ * `pathWithoutLocale` : `""` pour l’accueil, sinon `/about`, `/trainings`, `/blog/…`, etc.
+ */
+export function localePageSocial(
+  locale: Locale,
+  pathWithoutLocale: string,
+  displayTitle: string,
+  description: string,
+): Pick<Metadata, "openGraph" | "twitter"> {
+  const suffix = pathWithoutLocale === "" ? "" : pathWithoutLocale.startsWith("/") ? pathWithoutLocale : `/${pathWithoutLocale}`;
+  const urlPath = `/${locale}${suffix}`;
+  const ogImageAlt = `${siteConfig.name} — ${displayTitle}`;
+  return {
+    openGraph: {
+      type: "website",
+      siteName: siteConfig.name,
+      title: displayTitle,
+      description,
+      url: absoluteUrl(urlPath),
+      locale: ogLocaleFor(locale),
+      alternateLocale: ogAlternateLocales(locale),
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: ogImageAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: displayTitle,
+      description,
+      images: [siteConfig.ogImage],
+    },
+  };
+}
+
 type PageSeo = { title: string; description: string };
 
 /**

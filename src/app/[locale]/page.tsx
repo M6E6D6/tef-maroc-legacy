@@ -10,8 +10,8 @@ import { TrainingCategories } from "@/components/home/TrainingCategories";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 import { HomeFaqJsonLd } from "@/components/seo/HomeFaqJsonLd";
 import { siteConfig } from "@/data/site";
-import { absoluteUrl, localeAlternates, ogLocaleFor } from "@/i18n/metadata";
-import { homeSeo } from "@/i18n/seo-copy";
+import { localeAlternates, localePageSocial } from "@/i18n/metadata";
+import { homeKeywords, homeSeo } from "@/i18n/seo-copy";
 import { locales, type Locale } from "@/i18n/translations";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -27,17 +27,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: documentTitle,
     description: seo.description,
+    keywords: homeKeywords[locale],
     alternates: localeAlternates(locale, "/"),
-    openGraph: {
-      title: documentTitle,
-      description: seo.description,
-      url: absoluteUrl(`/${locale}`),
-      locale: ogLocaleFor(locale),
-    },
-    twitter: {
-      title: documentTitle,
-      description: seo.description,
-    },
+    ...localePageSocial(locale, "", documentTitle, seo.description),
   };
 }
 

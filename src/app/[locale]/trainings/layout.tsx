@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { TrainingsCatalogJsonLd } from "@/components/seo/TrainingsCatalogJsonLd";
 import { siteConfig } from "@/data/site";
-import { absoluteUrl, localeAlternates, ogLocaleFor } from "@/i18n/metadata";
+import { localeAlternates, localePageSocial } from "@/i18n/metadata";
 import { trainingsKeywords, trainingsSeo } from "@/i18n/seo-copy";
 import { locales, type Locale } from "@/i18n/translations";
 
@@ -15,21 +15,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
   const locale = l as Locale;
   const seo = trainingsSeo[locale];
+  const ogTitle = `${seo.title} | ${siteConfig.name}`;
   return {
     title: seo.title,
     description: seo.description,
     keywords: trainingsKeywords[locale],
     alternates: localeAlternates(locale, "/trainings"),
-    openGraph: {
-      title: `${seo.title} | ${siteConfig.name}`,
-      description: seo.description,
-      url: absoluteUrl(`/${locale}/trainings`),
-      locale: ogLocaleFor(locale),
-    },
-    twitter: {
-      title: `${seo.title} | ${siteConfig.name}`,
-      description: seo.description,
-    },
+    ...localePageSocial(locale, "/trainings", ogTitle, seo.description),
   };
 }
 

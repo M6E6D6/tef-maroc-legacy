@@ -40,6 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: localeAlternates(locale, path),
     openGraph: {
       type: "article",
+      siteName: siteConfig.name,
       title: `${title} | ${siteConfig.name}`,
       description,
       url: absoluteUrl(`/${locale}${path}`),
