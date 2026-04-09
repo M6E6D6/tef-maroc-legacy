@@ -42,7 +42,7 @@ export const trainingsSeo: Record<Locale, SeoEntry> = {
   fr: {
     title: "Formations — Catalogue",
     description:
-      "Catalogue Tamuda Hospitality Academy : réception, cuisine, pâtisserie, service, hygiène HACCP, maintenance et management hôtelier. Durées modulaires et objectifs par métier.",
+      "Catalogue Tamuda Hospitality Academy — formation hôtellerie Maroc, école restauration Maroc : réception, cuisine, pâtisserie, service, hygiène HACCP, maintenance et management hôtelier. Durées modulaires et objectifs par métier.",
   },
   en: {
     title: "Trainings — Catalogue",
@@ -114,6 +114,7 @@ export const homeKeywords: Record<Locale, string[]> = {
   fr: [
     "Tamuda Hospitality Academy",
     "formation hôtellerie Maroc",
+    "école restauration Maroc",
     "formation restauration M'diq",
     "académie hôtelière Maroc",
     "service de luxe formation",
@@ -123,6 +124,8 @@ export const homeKeywords: Record<Locale, string[]> = {
   en: [
     "Tamuda Hospitality Academy",
     "hospitality academy Morocco",
+    "hospitality training Morocco",
+    "restaurant school Morocco",
     "luxury service training",
     "hotel school M'diq",
     "restaurant training Morocco",
@@ -131,6 +134,7 @@ export const homeKeywords: Record<Locale, string[]> = {
   ar: [
     "أكاديمية تامودا للضيافة",
     "تكوين فندقة المغرب",
+    "مدرسة مطاعم المغرب",
     "تكوين مطاعم المضيق",
     "خدمة فاخرة تكوين",
   ],
@@ -144,6 +148,8 @@ export const aboutKeywords: Record<Locale, string[]> = {
 
 export const trainingsKeywords: Record<Locale, string[]> = {
   fr: [
+    "formation hôtellerie Maroc",
+    "école restauration Maroc",
     "catalogue formations hôtellerie",
     "formation réception hôtel",
     "formation cuisine Maroc",
@@ -151,13 +157,21 @@ export const trainingsKeywords: Record<Locale, string[]> = {
     "formation management hôtelier",
   ],
   en: [
+    "hospitality training Morocco",
+    "restaurant school Morocco",
     "hospitality training catalog",
     "hotel reception training",
     "culinary school Morocco",
     "pastry professional course",
     "hotel management training",
   ],
-  ar: ["كتالوج تكوين ضيافة", "تكوين استقبال فندق", "تكوين مطبخ المغرب"],
+  ar: [
+    "تكوين فندقة المغرب",
+    "مدرسة مطاعم المغرب",
+    "كتالوج تكوين ضيافة",
+    "تكوين استقبال فندق",
+    "تكوين مطبخ المغرب",
+  ],
 };
 
 export const servicesKeywords: Record<Locale, string[]> = {

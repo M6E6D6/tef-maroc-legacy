@@ -48,6 +48,7 @@ export const metadata: Metadata = {
     "formation Maroc",
     "formation professionnelle Casablanca",
     "formation hôtellerie Maroc",
+    "école restauration Maroc",
     "formation restauration Maroc",
     "service de luxe formation",
     "académie hôtelière Maroc",

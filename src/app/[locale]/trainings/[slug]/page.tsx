@@ -11,6 +11,7 @@ import { TrainingRegistrationForm } from "@/components/trainings/TrainingRegistr
 import { siteConfig } from "@/data/site";
 import { absoluteUrl, localeAlternates, ogAlternateLocales, ogLocaleFor } from "@/i18n/metadata";
 import { withLocale } from "@/i18n/routing";
+import { trainingsKeywords } from "@/i18n/seo-copy";
 import { locales, translations, type Locale } from "@/i18n/translations";
 
 export function generateStaticParams() {
@@ -35,6 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
+    keywords: trainingsKeywords[locale],
     alternates: localeAlternates(locale, path),
     openGraph: {
       type: "article",

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { TrainingsCatalogJsonLd } from "@/components/seo/TrainingsCatalogJsonLd";
 import { siteConfig } from "@/data/site";
 import { absoluteUrl, localeAlternates, ogLocaleFor } from "@/i18n/metadata";
-import { trainingsSeo } from "@/i18n/seo-copy";
+import { trainingsKeywords, trainingsSeo } from "@/i18n/seo-copy";
 import { locales, type Locale } from "@/i18n/translations";
 
 type Props = { children: React.ReactNode; params: Promise<{ locale: string }> };
@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: seo.title,
     description: seo.description,
+    keywords: trainingsKeywords[locale],
     alternates: localeAlternates(locale, "/trainings"),
     openGraph: {
       title: `${seo.title} | ${siteConfig.name}`,
