@@ -10,10 +10,19 @@ type Props = {
 
 export function ContactForm({ bare = false }: Props) {
   const [status, setStatus] = useState<"idle" | "sent">("idle");
+  const [validationError, setValidationError] = useState<string | null>(null);
   const { t } = useI18n();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
+    if (!form.checkValidity()) {
+      setValidationError(t.contact.formFillRequired);
+      setStatus("idle");
+      form.querySelector<HTMLElement>(":invalid")?.focus();
+      return;
+    }
+    setValidationError(null);
     setStatus("sent");
   }
 
@@ -24,6 +33,7 @@ export function ContactForm({ bare = false }: Props) {
   return (
     <form
       onSubmit={handleSubmit}
+      onInput={() => setValidationError(null)}
       className={shell}
       aria-label={t.contact.formAriaLabel}
       noValidate
@@ -99,6 +109,15 @@ export function ContactForm({ bare = false }: Props) {
             aria-required="true"
           />
         </div>
+        {validationError ? (
+          <p
+            className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-800"
+            role="alert"
+            aria-live="polite"
+          >
+            {validationError}
+          </p>
+        ) : null}
         <button
           type="submit"
           className="w-full rounded-lg bg-[var(--tef-navy)] px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-[#003875] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-gold)]"

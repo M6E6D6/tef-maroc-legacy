@@ -101,6 +101,7 @@ type Dictionary = {
     formSubject: string;
     cardKicker: string;
     cardHeading: string;
+    formFillRequired: string;
   };
   aboutPage: {
     title: string;
@@ -139,6 +140,16 @@ type Dictionary = {
     backToTrainings: string;
     ctaIntro: string;
     ctaContact: string;
+    registrationHeading: string;
+    registrationIntro: string;
+    registrationAriaLabel: string;
+    registrationTraining: string;
+    registrationPhone: string;
+    registrationCompany: string;
+    registrationNotes: string;
+    registrationSubmit: string;
+    registrationSuccess: string;
+    registrationOtherRequests: string;
   };
   blogPage: {
     title: string;
@@ -259,6 +270,7 @@ export const translations: Record<Locale, Dictionary> = {
       formSubject: "Sujet",
       cardKicker: "Votre contact",
       cardHeading: "Contactez-nous",
+      formFillRequired: "Veuillez remplir tous les champs obligatoires (marqués d’une astérisque).",
     },
     aboutPage: {
       title: "À propos de",
@@ -300,6 +312,17 @@ export const translations: Record<Locale, Dictionary> = {
       backToTrainings: "Retour au catalogue",
       ctaIntro: "Parlons de votre niveau actuel et du calendrier souhaité pour bâtir un parcours adapté.",
       ctaContact: "Nous contacter",
+      registrationHeading: "S’inscrire à cette formation",
+      registrationIntro:
+        "Indiquez vos coordonnées et vos attentes : nous vous recontacterons pour confirmer les modalités et les dates.",
+      registrationAriaLabel: "Formulaire d’inscription à une formation",
+      registrationTraining: "Formation",
+      registrationPhone: "Téléphone",
+      registrationCompany: "Entreprise ou établissement",
+      registrationNotes: "Message supplémentaire (facultatif)",
+      registrationSubmit: "S’inscrire",
+      registrationSuccess: "Merci, votre demande a été enregistrée. Notre équipe vous contactera sous peu.",
+      registrationOtherRequests: "Une autre question ? Contact général",
     },
     blogPage: {
       title: "Blog",
@@ -418,6 +441,7 @@ export const translations: Record<Locale, Dictionary> = {
       formSubject: "Subject",
       cardKicker: "Your consultant",
       cardHeading: "Contact Us",
+      formFillRequired: "Please fill in all required fields (marked with an asterisk).",
     },
     aboutPage: {
       title: "About",
@@ -459,6 +483,17 @@ export const translations: Record<Locale, Dictionary> = {
       backToTrainings: "Back to catalogue",
       ctaIntro: "Share your current level and preferred timing so we can shape the right learning path.",
       ctaContact: "Contact us",
+      registrationHeading: "Register for this training",
+      registrationIntro:
+        "Share your details and expectations—we will get back to you to confirm format and scheduling.",
+      registrationAriaLabel: "Training registration form",
+      registrationTraining: "Training",
+      registrationPhone: "Phone",
+      registrationCompany: "Company or organization",
+      registrationNotes: "Additional message (optional)",
+      registrationSubmit: "Register",
+      registrationSuccess: "Thank you. Your request has been received and our team will contact you shortly.",
+      registrationOtherRequests: "Something else? General contact",
     },
     blogPage: {
       title: "Blog",
@@ -574,6 +609,7 @@ export const translations: Record<Locale, Dictionary> = {
       formSubject: "الموضوع",
       cardKicker: "مستشاركم",
       cardHeading: "تواصل معنا",
+      formFillRequired: "يرجى ملء جميع الحقول الإلزامية (المميزة بنجمة).",
     },
     aboutPage: {
       title: "حول",
@@ -612,6 +648,17 @@ export const translations: Record<Locale, Dictionary> = {
       backToTrainings: "العودة إلى الكتالوج",
       ctaIntro: "شاركونا مستواكم الحالي والتوقيت المناسب لنصمم مساراً ملائماً.",
       ctaContact: "اتصل بنا",
+      registrationHeading: "التسجيل في هذا التكوين",
+      registrationIntro:
+        "أدخل بياناتك وتوقعاتك؛ سنتواصل معك لتأكيد الشروط والمواعيد.",
+      registrationAriaLabel: "نموذج التسجيل في تكوين",
+      registrationTraining: "التكوين",
+      registrationPhone: "الهاتف",
+      registrationCompany: "المؤسسة أو الشركة",
+      registrationNotes: "رسالة إضافية (اختياري)",
+      registrationSubmit: "تسجيل",
+      registrationSuccess: "شكرا، تم استلام طلبك. سيتصل بك فريقنا قريبا.",
+      registrationOtherRequests: "استفسار آخر؟ صفحة الاتصال",
     },
     blogPage: {
       title: "المدونة",

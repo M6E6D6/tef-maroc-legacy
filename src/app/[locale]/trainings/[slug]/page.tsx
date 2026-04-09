@@ -7,6 +7,7 @@ import { marketingImages } from "@/data/marketing-images";
 import { getTrainingCategories, getAllTrainingCategorySlugs, isTrainingCategorySlug } from "@/data/trainings";
 import { getTrainingArticle, trainingImageIndex } from "@/data/trainings-detail";
 import { TrainingCourseDetailJsonLd } from "@/components/seo/TrainingCourseDetailJsonLd";
+import { TrainingRegistrationForm } from "@/components/trainings/TrainingRegistrationForm";
 import { siteConfig } from "@/data/site";
 import { absoluteUrl, localeAlternates, ogAlternateLocales, ogLocaleFor } from "@/i18n/metadata";
 import { withLocale } from "@/i18n/routing";
@@ -140,15 +141,9 @@ export default async function TrainingDetailPage({ params }: Props) {
           </ul>
         </section>
 
-        <aside className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-8 sm:p-10">
-          <p className="text-slate-700">{t.ctaIntro}</p>
-          <Link
-            href={withLocale(locale, "/contact")}
-            className="mt-5 inline-flex rounded-lg bg-[var(--color-navy)] px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
-          >
-            {t.ctaContact}
-          </Link>
-        </aside>
+        <section id="inscription" className="mt-14 scroll-mt-24" aria-labelledby="training-registration-heading">
+          <TrainingRegistrationForm trainingTitle={article.meta.title[locale]} />
+        </section>
       </article>
     </div>
     </>
